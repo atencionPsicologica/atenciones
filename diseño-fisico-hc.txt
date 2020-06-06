@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS medicalcloud;
+CREATE DATABASE IF NOT EXISTS app;
 
-USE medicalcloud;
+USE app;
 
 CREATE TABLE usuarios(
 	id INT (255) AUTO_INCREMENT NOT NULL,
