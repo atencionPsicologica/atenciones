@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `app`.`antfamiliares` (
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
   `paciente` INT(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_antfamiliares_pacientes` (`paciente` ASC) VISIBLE,
+  INDEX `fk_antfamiliares_pacientes` (`paciente` ASC),
   CONSTRAINT `fk_antfamiliares_pacientes`
     FOREIGN KEY (`paciente`)
     REFERENCES `app`.`pacientes` (`id`))
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `app`.`antpersonales` (
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
   `paciente` INT(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_antpersonales_pacientes` (`paciente` ASC) VISIBLE,
+  INDEX `fk_antpersonales_pacientes` (`paciente` ASC),
   CONSTRAINT `fk_antpersonales_pacientes`
     FOREIGN KEY (`paciente`)
     REFERENCES `app`.`pacientes` (`id`))
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `app`.`acompaniante` (
   `pregunta` VARCHAR(255) NULL DEFAULT NULL,
   `respuesta` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `usuarios_uniquies_fields` (`email` ASC, `alias` ASC) VISIBLE)
+  UNIQUE INDEX `usuarios_uniquies_fields` (`email` ASC, `alias` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = latin1;
@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `app`.`consultas` (
   `paciente` INT(255) NULL DEFAULT NULL,
   `acompaniante_id` INT(255) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_consultas_pacientes` (`paciente` ASC) VISIBLE,
-  INDEX `fk_consultas_acompaniante1_idx` (`acompaniante_id` ASC) VISIBLE,
+  INDEX `fk_consultas_pacientes` (`paciente` ASC)app,
+  INDEX `fk_consultas_acompaniante1_idx` (`acompaniante_id` ASC),
   CONSTRAINT `fk_consultas_pacientes`
     FOREIGN KEY (`paciente`)
     REFERENCES `app`.`pacientes` (`id`),
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `app`.`recomendaciones` (
   `indicaciones` VARCHAR(255) NULL DEFAULT NULL,
   `consultas_id` INT(255) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_recomendaciones_consultas1_idx` (`consultas_id` ASC) VISIBLE,
+  INDEX `fk_recomendaciones_consultas1_idx` (`consultas_id` ASC),
   CONSTRAINT `fk_recomendaciones_consultas1`
     FOREIGN KEY (`consultas_id`)
     REFERENCES `app`.`consultas` (`id`)
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `app`.`historial` (
   `numero` VARCHAR(255) NULL DEFAULT NULL,
   `recomendaciones_id` INT(255) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_historial_recomendaciones1_idx` (`recomendaciones_id` ASC) VISIBLE,
+  INDEX `fk_historial_recomendaciones1_idx` (`recomendaciones_id` ASC),
   CONSTRAINT `fk_historial_recomendaciones1`
     FOREIGN KEY (`recomendaciones_id`)
     REFERENCES `app`.`recomendaciones` (`id`)
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `app`.`sigvitales` (
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
   `paciente` INT(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_sigvitales_pacientes` (`paciente` ASC) VISIBLE,
+  INDEX `fk_sigvitales_pacientes` (`paciente` ASC),
   CONSTRAINT `fk_sigvitales_pacientes`
     FOREIGN KEY (`paciente`)
     REFERENCES `app`.`pacientes` (`id`))
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `app`.`telefonos` (
   `numero` INT(255) NULL DEFAULT NULL,
   `paciente` INT(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_telefonos_paciente` (`paciente` ASC) VISIBLE,
+  INDEX `fk_telefonos_paciente` (`paciente` ASC),
   CONSTRAINT `fk_telefonos_paciente`
     FOREIGN KEY (`paciente`)
     REFERENCES `app`.`pacientes` (`id`))
