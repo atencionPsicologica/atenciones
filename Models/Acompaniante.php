@@ -4,7 +4,7 @@
 * Autor: Elivar Largo
 * Sitio Web: wwww.ecodeup.com
 */
-class Usuario
+class Acompaniante
 {
 	private $id;
 	private $alias;
@@ -28,27 +28,33 @@ class Usuario
 	}
 
 
-	public function getId(){
+	public function getId()
+	{
 		return $this->id;
 	}
 
-	public function setId($id){
+	public function setId($id)
+	{
 		$this->id = $id;
 	}
 
-	public function getAlias(){
+	public function getAlias()
+	{
 		return $this->alias;
 	}
 
-	public function setAlias($alias){
+	public function setAlias($alias)
+	{
 		$this->alias = $alias;
 	}
 
-	public function getNombres(){
+	public function getNombres()
+	{
 		return $this->nombres;
 	}
 
-	public function setNombres($nombres){
+	public function setNombres($nombres)
+	{
 		$this->nombres = $nombres;
 	}
 
@@ -56,39 +62,48 @@ class Usuario
 		return $this->apellidos;
 	}
 
-	public function setApellidos($apellidos){
+	public function setApellidos($apellidos)
+	{
 		$this->apellidos = $apellidos;
 	}
 
-	public function getEmail(){
+	public function getEmail()
+	{
 		return $this->email;
 	}
 
-	public function setEmail($email){
+	public function setEmail($email)
+	{
 		$this->email = $email;
 	}
 
-	public function getClave(){
+	public function getClave()
+	{
 		return $this->clave;
 	}
 
-	public function setClave($clave){
+	public function setClave($clave)
+	{
 		$this->clave = $clave;
 	}
 
-	public function getPregunta(){
+	public function getPregunta()
+	{
 		return $this->pregunta;
 	}
 
-	public function setPregunta($pregunta){
+	public function setPregunta($pregunta)
+	{
 		$this->pregunta = $pregunta;
 	}
 
-	public function getRespuesta(){
+	public function getRespuesta()
+	{
 		return $this->respuesta;
 	}
 
-	public function setRespuesta($respuesta){
+	public function setRespuesta($respuesta)
+	{
 		$this->respuesta = $respuesta;
 	}
 
@@ -97,33 +112,33 @@ class Usuario
 
 	//función para obtener todos los usuarios
 	public static function all(){
-		$listaUsuarios =[];
+		$listaAcompaniante =[];
 		$db=Db::getConnect();
-		$sql=$db->query('SELECT * FROM usuarios');
+		$sql=$db->query('SELECT * FROM acompaniante');
 
 		// carga en la $listaUsuarios cada registro desde la base de datos
-		foreach ($sql->fetchAll() as $usuario) {
-			$listaUsuarios[]= new Usuario($usuario['id'],$usuario['alias'], $usuario['nombres'],$usuario['apellidos'],$usuario['email'], $usuario['clave'], $usuario['respuesta'], $usuario['pregunta']);
+		foreach ($sql->fetchAll() as $acompaniante) {
+			$listaAcompaniante[]= new Acompaniante($acompaniante['id'],$acompaniante['alias'], $acompaniante['nombres'],$acompaniante['apellidos'],$acompaniante['email'], $acompaniante['clave'], $acompaniante['respuesta'], $acompaniante['pregunta']);
 		}
-		return $listaUsuarios;
+		return $listaAcompaniante;
 	}
 
 	//la función para registrar un usuario
-	public static function save($usuario){
+	public static function save($acompaniante){
 		$db=Db::getConnect();
 			
-		$insert=$db->prepare('INSERT INTO USUARIOS VALUES(NULL,:alias,:nombres,:apellidos,:email,:clave, :respuesta,:pregunta)');
-		$insert->bindValue('alias',$usuario->getAlias());
-		$insert->bindValue('nombres',$usuario->getNombres());
-		$insert->bindValue('apellidos',$usuario->getApellidos());
-		$insert->bindValue('email',$usuario->getEmail());
+		$insert=$db->prepare('INSERT INTO acompaniante VALUES(NULL,:alias,:nombres,:apellidos,:email,:clave, :respuesta,:pregunta)');
+		$insert->bindValue('alias',$acompaniante->getAlias());
+		$insert->bindValue('nombres',$acompaniante->getNombres());
+		$insert->bindValue('apellidos',$acompaniante->getApellidos());
+		$insert->bindValue('email',$acompaniante->getEmail());
 		//encripta la clave
-		$pass=password_hash($usuario->getClave(),PASSWORD_DEFAULT);
+		$pass=password_hash($acompaniante->getClave(),PASSWORD_DEFAULT);
 		//var_dump($pass);
 		//die();
 		$insert->bindValue('clave',$pass);
-		$insert->bindValue('pregunta',$usuario->getPregunta());
-		$insert->bindValue('respuesta',$usuario->getRespuesta());
+		$insert->bindValue('pregunta',$acompaniante->getPregunta());
+		$insert->bindValue('respuesta',$acompaniante->getRespuesta());
 		$insert->execute();
 	}
 
