@@ -143,18 +143,18 @@ class Acompaniante
 	}
 
 	//la función para actualizar 
-	public static function update($usuario){
+	public static function update($acompaniante){
 		$db=Db::getConnect();
-		$update=$db->prepare('UPDATE usuarios SET nombres=:nombres WHERE id=:id');
-		$update->bindValue('id',$usuario->id);
-		$update->bindValue('nombres',$usuario->nombres);
+		$update=$db->prepare('UPDATE acompaniante SET nombres=:nombres WHERE id=:id');
+		$update->bindValue('id',$acompaniante->id);
+		$update->bindValue('nombres',$acompaniante->nombres);
 		$update->execute();
 	}
 
 	// la función para eliminar por el id
 	public static function delete($id){
 		$db=Db::getConnect();
-		$delete=$db->prepare('DELETE FROM usuarios WHERE ID=:id');
+		$delete=$db->prepare('DELETE FROM acompaniante WHERE ID=:id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 	}
@@ -163,14 +163,14 @@ class Acompaniante
 	public static function getById($id){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM usuarios WHERE ID=:id');
+		$select=$db->prepare('SELECT * FROM acompaniante WHERE ID=:id');
 		$select->bindValue('id',$id);
 		$select->execute();
 		//asignarlo al objeto usuario
-		$usuarioDb=$select->fetch();
-		$usuario= new Usuario($usuarioDb['id'],$usuarioDb['alias'],$usuarioDb['nombres'],$usuarioDb['apellidos'],$usuarioDb['email'], $usuarioDb['clave'],$usuarioDb['pregunta'],$usuarioDb['respuesta']);
+		$acompanianteDb=$select->fetch();
+		$acompaniante= new Usuario($acompanianteDb['id'],$acompanianteDb['alias'],$acompanianteDb['nombres'],$acompanianteDb['apellidos'],$acompanianteDb['email'], $acompanianteDb['clave'],$acompanianteDb['pregunta'],$acompanianteDb['respuesta']);
 		//var_dump($usuario);
 		//die();
-		return $usuario;
+		return $acompaniante;
 	}
 }
