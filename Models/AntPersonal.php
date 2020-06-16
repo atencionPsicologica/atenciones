@@ -7,35 +7,26 @@
 class AntPersonal
 {
 	private $id;
-	private $imenarquia;
-	private $imenopausia;
 	private $vsexualactiva;
-	private $ciclos;
-	private $gesta;
-	private $partos;
+	private $embarazos;
 	private $abortos;
-	private $cesareas;
-	private $fum;
-	private $fup;
-	private $hvivos;
-	private $mpf;
+	private $abusoPsico;
+	private $abusoFis;
+	private $abandono;
+	private $vicios;
 	private $descripcion;
 	private $paciente;
-	function __construct($id, $imenarquia, $imenopausia, $vsexualactiva, $ciclos, $gesta, $partos, $abortos, $cesareas, $fum, $fup, $hvivos, $mpf, $descripcion, $paciente)
+
+	function __construct($id, $vsexualactiva, $embarazos, $abortos, $abusoPsico, $abusoFis, $abandono, $vicios, $descripcion, $paciente)
 	{
 		$this->setId($id);
-		$this->setImenarquia($imenarquia);
-		$this->setImenopausia($imenopausia);
 		$this->setVsexualactiva($vsexualactiva);
-		$this->setCiclos($ciclos);
-		$this->setGesta($gesta);
-		$this->setPartos($partos);
+		$this->setEmbarazos($embarazos);
 		$this->setAbortos($abortos);
-		$this->setCesareas($cesareas);
-		$this->setFum($fum);
-		$this->setFup($fup);
-		$this->setHvivos($hvivos);
-		$this->setMpf($mpf);
+		$this->setAbusoPsico($abusoPsico);
+		$this->setAbusoFis($abusoFis);
+		$this->setHvivos($abandono);
+		$this->setMpf($vicios);
 		$this->setDescripcion($descripcion);
 		$this->setPaciente($paciente);
 	}
@@ -49,22 +40,6 @@ class AntPersonal
 		$this->id = $id;
 	}
 
-	public function getImenarquia(){
-		return $this->imenarquia;
-	}
-
-	public function setImenarquia($imenarquia){
-		$this->imenarquia = $imenarquia;
-	}
-
-	public function getImenopausia(){
-		return $this->imenopausia;
-	}
-
-	public function setImenopausia($imenopausia){
-		$this->imenopausia = $imenopausia;
-	}
-
 	public function getVsexualactiva(){
 		return $this->vsexualactiva;
 	}
@@ -73,28 +48,12 @@ class AntPersonal
 		$this->vsexualactiva = $vsexualactiva;
 	}
 
-	public function getCiclos(){
-		return $this->ciclos;
+	public function getEmbarazos(){
+		return $this->embarazos;
 	}
 
-	public function setCiclos($ciclos){
-		$this->ciclos = $ciclos;
-	}
-
-	public function getGesta(){
-		return $this->gesta;
-	}
-
-	public function setGesta($gesta){
-		$this->gesta = $gesta;
-	}
-
-	public function getPartos(){
-		return $this->partos;
-	}
-
-	public function setPartos($partos){
-		$this->partos = $partos;
+	public function setEmbarazos($embarazos){
+		$this->embarazos = $embarazos;
 	}
 
 	public function getAbortos(){
@@ -105,44 +64,36 @@ class AntPersonal
 		$this->abortos = $abortos;
 	}
 
-	public function getCesareas(){
-		return $this->cesareas;
+	public function getAbusoPsico(){
+		return $this->abusoPsico;
 	}
 
-	public function setCesareas($cesareas){
-		$this->cesareas = $cesareas;
+	public function setAbusoPsico($abusoPsico){
+		$this->abusoPsico = $abusoPsico;
 	}
 
-	public function getFum(){
-		return $this->fum;
+	public function getAbusoFis(){
+		return $this->abusoFis;
 	}
 
-	public function setFum($fum){
-		$this->fum = $fum;
+	public function setAbusoFis($abusoFis){
+		$this->abusoFis = $abusoFis;
 	}
 
-	public function getFup(){
-		return $this->fup;
+	public function getAbandono(){
+		return $this->abandono;
 	}
 
-	public function setFup($fup){
-		$this->fup = $fup;
+	public function setAbandono($abandono){
+		$this->abandono = $abandono;
 	}
 
-	public function getHvivos(){
-		return $this->hvivos;
+	public function getVicios(){
+		return $this->vicios;
 	}
 
-	public function setHvivos($hvivos){
-		$this->hvivos = $hvivos;
-	}
-
-	public function getMpf(){
-		return $this->mpf;
-	}
-
-	public function setMpf($mpf){
-		$this->mpf = $mpf;
+	public function setVicios($vicios){
+		$this->vicios = $vicios;
 	}
 
 	public function getDescripcion(){
