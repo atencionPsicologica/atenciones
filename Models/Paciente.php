@@ -277,39 +277,14 @@ class Paciente
 		$delete->bindValue('id',$id);
 		$delete->execute();
 
-		//eliminar registros exacomplementarios
-		$delete=$db->prepare('DELETE FROM exacomplementarios WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
-		$delete->execute();
-
-		//eliminar registros exafisicos
-		$delete=$db->prepare('DELETE FROM exafisicos WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
-		$delete->execute();
-
-		//eliminar registros exavisuales
-		$delete=$db->prepare('DELETE FROM exavisuales WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
-		$delete->execute();
-
 		//eliminar registros histoclinicas
 		$delete=$db->prepare('DELETE FROM histoclinicas WHERE paciente=:id ');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 		
-		//eliminar registros  recetas
-		$delete=$db->prepare('DELETE FROM recetas WHERE paciente=:id ');
+		//eliminar registros  recomendaciones
+		$delete=$db->prepare('DELETE FROM recomendaciones WHERE consultas=:id ');
 		$delete->bindValue('id',$id);		
-		$delete->execute();
-		
-		//eliminar registros sistemas
-		$delete=$db->prepare('DELETE FROM sistemas WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
-		$delete->execute();
-		
-		//eliminar registros sigvitales
-		$delete=$db->prepare('DELETE FROM sigvitales WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
 		$delete->execute();
 
 		//eliminar el paciente
