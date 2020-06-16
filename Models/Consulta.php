@@ -207,7 +207,7 @@ class Consulta
 		$select->execute();
 		//asignarlo al objeto
 		$recomendacionesDb=$select->fetch();
-		$recomendaciones= new Receta($recomendacionesDb['id'],$recomendacionesDb['fecha'],$recomendacionesDb['tareas'],$recomendacionesDb['indicaciones'],$recomendacionesDb['consultas']);
+		$recomendaciones= new Recomendacion($recomendacionesDb['id'],$recomendacionesDb['fecha'],$recomendacionesDb['tareas'],$recomendacionesDb['indicaciones'],$recomendacionesDb['consultas']);
 		//var_dump($usuario);
 		//die();
 		return $recomendaciones;
