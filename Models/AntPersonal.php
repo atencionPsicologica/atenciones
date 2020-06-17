@@ -113,4 +113,58 @@ class AntPersonal
 	}
 
 	//opciones CRUD
+
+	public static function saveAntPersonal($antPersonal){
+		$db=Db::getConnect();
+		//var_dump($antPersonal);
+		//die();
+			
+		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :ciclos, :embarazos, :abortos, :abusoPsico, :abusoFis, :abandono, :vicios,:descripcion, :paciente)');
+
+		$insert->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
+		$insert->bindValue('embarazos',$antPersonal->getPartos());
+		$insert->bindValue('abortos',$antPersonal->getEmbarazos());
+		$insert->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
+		$insert->bindValue('abusoFis',$antPersonal->getAbusoFis());
+		$insert->bindValue('abandono',$antPersonal->getAbandono());
+		$insert->bindValue('vicios',$antPersonal->getVicios());
+		$insert->bindValue('descripcion',$antPersonal->getDescripcion());
+		$insert->bindValue('paciente',$antPersonal->getPaciente());
+		$insert->execute();
+	}
+
+
+	public static function getAntPersonalByPaciente($idPaciente){
+		$db=Db::getConnect();
+		//ar_dump($paciente);
+		//die();
+		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id');
+		$select->bindParam('id',$idPaciente);
+		$select->execute();
+
+		$antPersonalDb=$select->fetch();
+		$antPersonal= new AntPersonal($antPersonalDb['id'], $antPersonalDb['vsexualactiva'], $antPersonalDb['embarazos'],$antPersonalDb['abortos'], $antPersonalDb['abusoPsico'], $antPersonalDb['abusoFis'],$antPersonalDb['abandono'],$antPersonalDb['vicios'], $antPersonalDb['descripcion'],$antPersonalDb['paciente']);
+		return $antPersonal;
+	}
+
+	public static function updateAntPersonal($antPersonal){
+		//var_dump($historia);
+		//die();
+		$db=Db::getConnect();
+		$update=$db->prepare('UPDATE antpersonales SET vsexualactiva=:vsexualactiva, embarazos=:embarazos, abortos=:abortos, abusoPsico=:abusoPsico, abusoFis=:abusoFis, abandono=:abandono,vicios=:vicios,descripcion=:descripcion,paciente=:paciente  WHERE id=:id');
+		$update->bindValue('id',$antPersonal->getId());
+		$update->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
+		$update->bindValue('embarazos',$antPersonal->getEmbarazos());
+		$update->bindValue('abortos',$antPersonal->getAbortos());
+		$update->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
+		$update->bindValue('abusoFis',$antPersonal->getAbusoFis());
+		$update->bindValue('abandono',$antPersonal->getAbandono());
+		$update->bindValue('vicios',$antPersonal->getVicios());
+		$update->bindValue('descripcion',$antPersonal->getDescripcion());
+		$update->bindValue('paciente',$antPersonal->getPaciente());
+		$update->execute();
+	}
+
+
+
 }
