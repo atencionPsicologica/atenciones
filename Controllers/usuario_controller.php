@@ -13,7 +13,7 @@
 		public function show(){
 			//echo 'index desde UsuarioController';
 			
-			$usuarios=Usuario::all();
+			$usuarios=Acompaniante::all();
 			require_once('Views/User/show.php');
 		}
 
@@ -26,7 +26,7 @@
 		public function save(){
 			//Usuario::save($usuario);
 			$usuarios=[];
-			$usuarios=Usuario::all();
+			$usuarios=Acompaniante::all();
 			$existe=False;
 			//var_dump($existe);
 			//	die();
@@ -38,8 +38,8 @@
 			}			
 
 			if (!$existe) {
-				$usuario= new Usuario(null,$_POST['alias'],$_POST['nombres'],$_POST['email']);
-				Usuario::save($usuario);
+				$usuario= new Acompaniante(null,$_POST['alias'],$_POST['nombres'],$_POST['email']);
+				Acompaniante::save($usuario);
 				$_SESSION['mensaje']='Registro guardado satisfactoriamente';
 				header('Location: index.php');
 				//require_once('Views/Layouts/layout.php');*/
@@ -52,24 +52,24 @@
 
 		public function showregister(){
 			$id=$_GET['id'];
-			$usuario=Usuario::getById($id);
+			$usuario=Acompaniante::getById($id);
 			require_once('Views/User/update.php');
 			//Usuario::update($usuario);
 			//header('Location: ../index.php');
 		}
 
 		public function update(){
-			$usuario= new Usuario($_POST['id'],$_POST['alias'],$_POST['nombres'],$_POST['email']);
+			$usuario= new Acompaniante($_POST['id'],$_POST['alias'],$_POST['nombres'],$_POST['email']);
 
 			//var_dump($usuario);
 			//die();
-			Usuario::update($usuario);
+			Acompaniante::update($usuario);
 			$_SESSION['mensaje']='Registro actualizado satisfactoriamente';
 			header('Location: index.php');
 		}
 
 		public function delete(){
-			Usuario::delete($_GET['id']);
+			Acompaniante::delete($_GET['id']);
 			$_SESSION['mensaje']='Registro eliminado satisfactoriamente';
 			header('Location: index.php');
 		}

@@ -6,11 +6,11 @@
 
       //consulta
       $sql= $db->prepare('SELECT *
-		FROM recetas
+		FROM recomendaciones
 		WHERE fecha=:fecha
 		AND paciente=:paciente');
       $sql->bindParam(':fecha',$_GET['fecha']);
-      $sql->bindParam(':paciente',$_GET['paciente']);
+      $sql->bindParam(':consulta',$_GET['consulta']);
       $sql->execute();
 
       $receta=$sql->fetchAll();
