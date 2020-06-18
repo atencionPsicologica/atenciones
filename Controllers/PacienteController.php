@@ -19,7 +19,7 @@ class PacienteController
 	}
 
 	public function save(){
-		$paciente= new Paciente(null,$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion'], $_SESSION['usuario_id']);
+		$paciente= new Paciente(null,$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion']);
 		Paciente::save($paciente);
 		$_SESSION['mensaje']='Registro guardado satisfactoriamente';		
 		$this->show();
@@ -30,6 +30,7 @@ class PacienteController
 	public function show(){
 		//var_dump($_SESSION['usuario_id']);
 		//die();
+		//modificar de tal forma que muestre las consultas del dia de cada usuario por paciente.
 		$pacientes=Paciente::all($_SESSION['usuario_id']);
 
 
@@ -78,7 +79,7 @@ class PacienteController
 	}
 
 	public function update(){
-		$paciente= new Paciente($_POST['id'],$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion'], $_SESSION['usuario_id']);
+		$paciente= new Paciente($_POST['id'],$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion']);
 
 		//var_dump($paciente);
 		//die();

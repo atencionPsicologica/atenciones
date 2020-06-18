@@ -48,7 +48,7 @@ class PlantillaHistoricoPdf extends FPDF
         $this->MultiCell(190,5,  utf8_decode('Descripción Adicional: '.$descripcion));
 
     }
-    function detalleFamiliares($cardiopatia, $diabetes,$cancer,$enfcardiovasculares,$hipertension,$enfmentales,$tuberculosis,$enfinfecciosas, $malformacion, $otra,$descripcion)
+    function detalleFamiliares($descripcion)
     {
         //DATOS AF
         //DATOS AF
@@ -58,18 +58,6 @@ class PlantillaHistoricoPdf extends FPDF
 
         $this->Ln();
         $this->SetFont('Arial','',10);
-        $this->Cell(45,10,  utf8_decode('Cardiopatía: '.$cardiopatia),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Diabetes: '.$diabetes),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Cáncer: '.$cancer),1, 0 , 'L' );        
-        $this->Cell(45,10,  utf8_decode('Enf. Cardiovasculares: '.$enfcardiovasculares),1, 0 , 'L' );
-        $this->Ln();
-        $this->Cell(45,10,  utf8_decode('Hipertensión: '.$hipertension),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Enf. Mentales: '.$enfmentales),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Tuberculosis: '.$tuberculosis),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Enf. Infecciosas: '.$enfinfecciosas),1, 0 , 'L' );
-        $this->Ln();
-        $this->Cell(45,10,  utf8_decode('Malformación: '.$malformacion),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Otra : '.$otra),1, 0 , 'L' );
         $this->Ln();
         $this->MultiCell(190,5,  utf8_decode('Descripción Adicional: '.$descripcion));
         
@@ -94,10 +82,6 @@ class PlantillaHistoricoPdf extends FPDF
             $this->Ln();
             //datos consulta
             $this->Cell(65,15, utf8_decode("Fecha Consulta: ".$fila['fecha']),1, 0 , 'L' );
-            $this->Cell(35,15, utf8_decode("Pulso: ".$fila['pulso']),1, 0 , 'L' );
-            $this->Cell(45,15, utf8_decode("Presión Arterial: ".$fila['prearterial']),1, 0 , 'L' );
-            $this->Cell(35,15, utf8_decode("Peso: ".$fila['peso']),1, 0 , 'L' );
-            $this->Ln();
             $this->MultiCell(190,5,  utf8_decode('Motivo Consulta: '.$fila['enfactual']));
             $this->Ln();
             //final datos consulta
@@ -105,61 +89,7 @@ class PlantillaHistoricoPdf extends FPDF
              $this->Ln();
             $this->MultiCell(190,5, utf8_decode("Prescripción: ".$fila['prescripcion']));
             $this->SetFont('Arial','B',9);
-            //organos y sistemas
-            $this->Cell(65,15, utf8_decode("ÓRGANOS Y SISTEMAS"));
-            $this->Ln();
-            $this->SetFont('Arial','',10);
-            $res = ($fila['sentidos']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Sentidos: ".$res),1, 0 , 'L' );
-            $res = ($fila['respiratorio']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Respiratorio: ".$res),1, 0 , 'L' );
-            $res = ($fila['cardiovascular']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Cardiovascular: ".$res),1, 0 , 'L' );
-            $res = ($fila['nervioso']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Nervioso: ".$res),1, 0 , 'L' );
-            $res = ($fila['genital']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Genital: ".$res),1, 0 , 'L' );
-            $this->Ln();
-            $res = ($fila['digestivo']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Digestivo: ".$res),1, 0 , 'L' );
-            $res = ($fila['urinario']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Urinario: ".$res),1, 0 , 'L' );
-            $res = ($fila['mesqueletico']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Mesqueletico: ".$res),1, 0 , 'L' );
-            $res = ($fila['endocrino']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Endócrino: ".$res),1, 0 , 'L' );
-            $res = ($fila['linfatico']==2) ? "No" : "Si" ;
-            $this->Cell(35,15, utf8_decode("Linfático: ".$res),1, 0 , 'L' );
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Descripción Adicional: '.$fila['des_s']));
-            $this->Ln();
-            //datos exámenes físicos
-            $this->SetFont('Arial','B',9);
-            $this->Cell(65,15, utf8_decode("EXÁMENES FÍSICOS"));
-            $this->Ln();
-            $this->SetFont('Arial','',10);
-            $this->MultiCell(190,5,  utf8_decode('Cabeza: '.$fila['cabeza']));
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Cuello: '.$fila['cuello']));
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Toráx: '.$fila['torax']));
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Abdomen: '.$fila['abdomen']));
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Miembros: '.$fila['miembros']));
-            $this->Ln();
-            $this->MultiCell(190,5,  utf8_decode('Genitales: '.$fila['genitales']));
-            $this->Ln();
-            
-
-            //datos exámenes complementarios
-            $this->SetFont('Arial','B',9);
-            $this->Cell(65,15, utf8_decode("EXÁMENES COMPLEMENTARIOS"));
-            $this->Ln();
-            $this->SetFont('Arial','',10);
-            $this->MultiCell(190,5,  utf8_decode('Descripción: '.$fila['des_ec']));
-
-
+             
             
             //receta
             $this->Ln();
