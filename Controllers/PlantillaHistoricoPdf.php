@@ -22,7 +22,7 @@ class PlantillaHistoricoPdf extends FPDF
 
     }
 
-    function detallePersonales($genero, $edad_menarquia,$edad_menopausia, $vida_sexual,$ciclos,$edad_gestacion,$numero_partos,$numero_abortos,$numero_cesareas,$fecha_ultima_menstruacion,$fecha_ultima_menstruacion,$fecha_ultimo_parto,$hijos_vivos,$mp_familiar,$descripcion)
+    function detallePersonales($genero, $vida_sexual,$numero_embarazos,$numero_abortos, $numero_abufi, $numero_abupsi,$abandono, $vicios, $descripcion)
     {
         //DATOS AP
         $this->SetFont('Arial','B',9);
@@ -30,20 +30,14 @@ class PlantillaHistoricoPdf extends FPDF
         $this->Cell(40,10,  utf8_decode('DATOS ANTECEDENTES PERSONALES'));
         $this->Ln();
         $this->SetFont('Arial','',10);
-        $this->Cell(45,10,  utf8_decode('Edad Menarquía: '.$edad_menarquia),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Edad Menopausia: '.$edad_menopausia),1, 0 , 'L' );
         $this->Cell(45,10,  utf8_decode('Vida Sexual Activa : '.$vida_sexual),1, 0 , 'L' );        
-        $this->Cell(45,10,  utf8_decode('Ciclos Menstruación : '.$ciclos),1, 0 , 'L' );
-        $this->Ln();
-        $this->Cell(45,10,  utf8_decode('Edad Gesta: '.$edad_gestacion),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Partos: '.$numero_partos),1, 0 , 'L' );
+        $this->Cell(45,10,  utf8_decode('Embarazos: '.$numero_embarazos),1, 0 , 'L' );
         $this->Cell(45,10,  utf8_decode('Abortos: '.$numero_abortos),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Cesáreas: '.$numero_cesareas),1, 0 , 'L' );
+        $this->Cell(45,10,  utf8_decode('Abuso físico: '.$numero_abufi),1, 0 , 'L' );
+        $this->Cell(45,10,  utf8_decode('Abuso Piscológico: '.$numero_abupsi),1, 0 , 'L' );
+        $this->Cell(45,10,  utf8_decode('Abandonos: '.$abandono),1, 0 , 'L' );
+        $this->Cell(45,10,  utf8_decode('Vicios: '.$vicios),1, 0 , 'L' );
         $this->Ln();
-        $this->Cell(45,10,  utf8_decode('F. U. M.: '.$fecha_ultima_menstruacion),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('F. U. P.: '.$fecha_ultimo_parto),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('Hijos vivos: '.$hijos_vivos),1, 0 , 'L' );
-        $this->Cell(45,10,  utf8_decode('M. P. F.: '.$mp_familiar),1, 0 , 'L' );
         $this->Ln();
         $this->MultiCell(190,5,  utf8_decode('Descripción Adicional: '.$descripcion));
 
@@ -94,10 +88,10 @@ class PlantillaHistoricoPdf extends FPDF
             //receta
             $this->Ln();
             $this->SetFont('Arial','B',10);
-            $this->Cell(65,15, utf8_decode("RECETA"));
+            $this->Cell(65,15, utf8_decode("RECOMENDACIONES"));
             $this->Ln();
             $this->SetFont('Arial','',10);
-            $this->MultiCell(190,5, utf8_decode('Medicamentos: '.$fila['medicamentos']));
+            $this->MultiCell(190,5, utf8_decode('Tareas: '.$fila['tareas']));
             $this->Ln();
             $this->MultiCell(190,5, utf8_decode("Indicaciones: ".$fila['indicaciones']));
 

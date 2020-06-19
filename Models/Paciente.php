@@ -177,7 +177,7 @@ class Paciente
 		//var_dump($paciente);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion,:usuario)');
+		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion)');
 		$insert->bindValue('cedula',$paciente->getCedula());
 		$insert->bindValue('nombres',$paciente->getNombres());
 		$insert->bindValue('apellidos',$paciente->getApellidos());
@@ -188,7 +188,6 @@ class Paciente
 		$insert->bindValue('email',$paciente->getEmail());
 		$insert->bindValue('tposangre',$paciente->getTposangre());
 		$insert->bindValue('direccion',$paciente->getDireccion());
-		$insert->bindValue('usuario',$paciente->getUsuario());
 		$insert->execute();
 	}
 
@@ -196,13 +195,13 @@ class Paciente
 	public static function all($idUsuario){
 		$listaPacientes =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT * FROM pacientes WHERE USUARIO=:id order by id');
+		$sql=$db->prepare('SELECT pa. * FROM pacientes pa, acompaniante ac, consultas con WHERE ac.id = con.acompaniante AND pa.id = con.paciente AND con.acompaniante = :id order by id');
 		$sql->bindParam(':id',$idUsuario);
 		$sql->execute();
 
 		// carga en la $listaPacientes cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $paciente) {
-			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion'], $paciente['usuario']);
+			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion'], $paciente['acompaniante']);
 		}
 		return $listaPacientes;
 	}
@@ -216,7 +215,7 @@ class Paciente
 		$select->execute();
 		//asignarlo al objeto paciente
 		$pacienteDb=$select->fetch();
-		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'],$pacienteDb['usuario']);
+		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion']);
 		return $paciente;
 	}
 
@@ -238,7 +237,7 @@ class Paciente
 		//var_dump($paciente);
 		//die();
 		$db=Db::getConnect();
-		$update=$db->prepare('UPDATE pacientes SET nombres=:nombres, apellidos=:apellidos,ocupacion=:ocupacion, estcivil=:estcivil, genero=:genero,fnacimiento=:fnacimiento, email=:email, tposangre=:tposangre, direccion=:direccion, usuario=:usuario  WHERE id=:id');
+		$update=$db->prepare('UPDATE pacientes SET nombres=:nombres, apellidos=:apellidos,ocupacion=:ocupacion, estcivil=:estcivil, genero=:genero,fnacimiento=:fnacimiento, email=:email, tposangre=:tposangre, direccion=:direccion  WHERE id=:id');
 		$update->bindValue('id',$paciente->getId());
 		//$update->bindValue('cedula',$paciente->getCedula());
 		$update->bindValue('nombres',$paciente->getNombres());
@@ -250,7 +249,6 @@ class Paciente
 		$update->bindValue('email',$paciente->getEmail());
 		$update->bindValue('tposangre',$paciente->getTposangre());
 		$update->bindValue('direccion',$paciente->getDireccion());
-		$update->bindValue('usuario',$paciente->getUsuario());
 		$update->execute();
 	}
 
@@ -275,16 +273,6 @@ class Paciente
 		//eliminar registros consultas
 		$delete=$db->prepare('DELETE FROM consultas WHERE paciente=:id ');
 		$delete->bindValue('id',$id);
-		$delete->execute();
-
-		//eliminar registros histoclinicas
-		$delete=$db->prepare('DELETE FROM histoclinicas WHERE paciente=:id ');
-		$delete->bindValue('id',$id);
-		$delete->execute();
-		
-		//eliminar registros  recomendaciones
-		$delete=$db->prepare('DELETE FROM recomendaciones WHERE consultas=:id ');
-		$delete->bindValue('id',$id);		
 		$delete->execute();
 
 		//eliminar el paciente
