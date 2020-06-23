@@ -65,7 +65,7 @@ class UsuarioController
 
 		//var_dump($usuario);
 		//die();
-		Usuario::update($usuario);
+		Acompaniante::update($usuario);
 		$_SESSION['mensaje']='Registro actualizado satisfactoriamente';
 		header('Location: index.php');
 	}
@@ -134,8 +134,8 @@ class UsuarioController
             $this->algoritmoModulo10(substr($numero, 0, 9), $numero[9]);
             $retorno='SI';
         
-        $datos = array('estado' => 'ok','nombre' => $nombre, 'apellido' => $apellido, 'edad' => $edad);
-        echo  json_encode($datos, true);
+        //$datos = array('estado' => 'ok','nombre' => $nombre, 'apellido' => $apellido, 'edad' => $edad);
+        //echo  json_encode($datos, true);
 	}
 
 	public function algoritmoModulo10($digitosIniciales, $digitoVerificador)
