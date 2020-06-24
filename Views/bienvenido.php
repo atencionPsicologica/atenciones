@@ -1,5 +1,5 @@
 <div class="container">
 	<div class="alert alert-success">
-		<p>Bienvenido a APP MÉDICOS</p>
+		<p>Bienvenido acompañante</p>
 	</div>
 </div>

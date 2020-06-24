@@ -1,5 +1,5 @@
 <div class="container">
-	<h2>Registro de Usuario</h2>
+	<h2>Registro de acompañante: </h2>
 	  <form action='?controller=usuario&action=save' method='post'>
 	  	<div class="form-group">
 	  		<label for="alias">Alias:</label>

@@ -6,7 +6,7 @@
 <html lang="es">
 <head>
 
-	<title> APP MEDICOS</title>
+	<title> Acompañantes</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Librerias Boostrap-->
