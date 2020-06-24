@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
 	//index.php?controller=usuario&action=validarCedula
 	$("#cedula").blur(function (){
@@ -25,3 +26,4 @@ $(document).ready(function(){
 		});		
 	});
 });
+*/

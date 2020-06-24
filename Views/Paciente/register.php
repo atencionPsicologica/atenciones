@@ -9,8 +9,8 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="cedula">Cédula:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Ingrese la cédula del paciente" required="true" autocomplete="off">
-        <div id="prueba"></div>  
+        <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Ingrese la cédula del paciente" required="true" autocomplete="off" maxlength="14">
+        <!--div id="prueba"></div-->  
       </div>
     </div>
     <div class="form-group">
