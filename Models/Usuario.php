@@ -4,7 +4,7 @@
 * Autor: Elivar Largo
 * Sitio Web: wwww.ecodeup.com
 */
-class Acompaniante
+class Usuario
 {
 	private $id;
 	private $alias;
@@ -118,7 +118,7 @@ class Acompaniante
 
 		// carga en la $listaUsuarios cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $acompaniante) {
-			$listaAcompaniante[]= new Acompaniante($acompaniante['id'],$acompaniante['alias'], $acompaniante['nombres'],$acompaniante['apellidos'],$acompaniante['email'], $acompaniante['clave'], $acompaniante['respuesta'], $acompaniante['pregunta']);
+			$listaAcompaniante[]= new Usuario($acompaniante['id'],$acompaniante['alias'], $acompaniante['nombres'],$acompaniante['apellidos'],$acompaniante['email'], $acompaniante['clave'], $acompaniante['respuesta'], $acompaniante['pregunta']);
 		}
 		return $listaAcompaniante;
 	}

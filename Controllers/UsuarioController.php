@@ -16,7 +16,7 @@ class UsuarioController
 	public function show(){
 		//echo 'index desde UsuarioController';
 			
-		$usuario=Acompaniante::getById($_GET['id']);
+		$usuario=Usuario::getById($_GET['id']);
 		require_once('Views/User/show.php');
 	}
 	public function register(){
@@ -28,7 +28,7 @@ class UsuarioController
 	public function save(){
 		//Usuario::save($usuario);
 		$usuarios=[];
-		$usuarios=Acompaniante::all();
+		$usuarios=Usuario::all();
 		$existe=False;
 		//var_dump($existe);
 		//	die();
@@ -40,8 +40,8 @@ class UsuarioController
 		}			
 
 		if (!$existe) {
-			$usuario= new Acompaniante(null,$_POST['alias'], $_POST['nombres'],$_POST['apellidos'],$_POST['email'], $_POST['pwd'], NULL, NULL);
-			Acompaniante::save($usuario);
+			$usuario= new Usuario(null,$_POST['alias'], $_POST['nombres'],$_POST['apellidos'],$_POST['email'], $_POST['pwd'], NULL, NULL);
+			Usuario::save($usuario);
 			$_SESSION['mensaje']='Registro guardado satisfactoriamente';
 			$this->showLogin();
 			//header('Location: index.php');
@@ -54,24 +54,24 @@ class UsuarioController
 
 	public function showregister(){
 		$id=$_GET['id'];
-		$usuario=Acompaniante::getById($id);
+		$usuario=Usuario::getById($id);
 		require_once('Views/User/update.php');
 		//Usuario::update($usuario);
 		//header('Location: ../index.php');
 	}
 
 	public function update(){
-		$usuario= new Acompaniante($_POST['id'],NULL,$_POST['nombres'],NULL,NULL,NULL,NULL,NULL, NULL);
+		$usuario= new Usuario($_POST['id'],NULL,$_POST['nombres'],NULL,NULL,NULL,NULL,NULL, NULL);
 
 		//var_dump($usuario);
 		//die();
-		Acompaniante::update($usuario);
+		Usuario::update($usuario);
 		$_SESSION['mensaje']='Registro actualizado satisfactoriamente';
 		header('Location: index.php');
 	}
 
 	public function delete(){
-		Acompaniante::delete($_GET['id']);
+		Usuario::delete($_GET['id']);
 		$_SESSION['mensaje']='Registro eliminado satisfactoriamente';
 		header('Location: index.php');
 	}
@@ -90,7 +90,7 @@ class UsuarioController
 	//función que valida el usuario esté registrado
 	public function login(){
 		$usuarios=[];
-		$usuarios=Acompaniante::all();
+		$usuarios=Usuario::all();
 		$existe=False;
 		//var_dump($existe);
 		//	die();

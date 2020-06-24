@@ -22,16 +22,11 @@
 				require_once('Models/AntPersonal.php');
 				require_once('Models/AntFamiliar.php');
 				require_once('Models/HistoClinica.php');
-				require_once('Models/ExaVisual.php');
 				$controller=new HistoriaController();
 				break; 
 			case 'consulta':
-				require_once('Models/SigVitales.php');
 				require_once('Models/HistoClinica.php');
 				require_once('Models/Consulta.php');
-				require_once('Models/Sistema.php');
-				require_once('Models/ExaFisico.php');
-				require_once('Models/ExaComplementario.php');
 				require_once('Models/Receta.php');
 				$controller= new ConsultaController();
 				break;

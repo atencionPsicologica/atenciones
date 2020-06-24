@@ -20,8 +20,8 @@
 					<td><?php echo $usuario->getAlias(); ?></td>
 					<td><?php echo $usuario->getNombres();?></td>
 					<td><?php echo $usuario->getEmail();?></td>
-					<td> <button type="button" class="btn btn-primary" onclick="location.href='?controller=usuario&action=showregister&id=<?php echo $usuario->getId()?>'">Actualizar</button></td>
-				<td><button type="button" class="btn btn-danger" onclick="location.href='?controller=usuario&action=delete&id=<?php echo $usuario->getId()?>'">Eliminar</button></td>
+					<td> <button type="button" class="btn btn-primary" onclick="location.href='?controller=acompaniante&action=showregister&id=<?php echo $usuario->getId()?>'">Actualizar</button></td>
+				<td><button type="button" class="btn btn-danger" onclick="location.href='?controller=acompaniante&action=delete&id=<?php echo $usuario->getId()?>'">Eliminar</button></td>
 				</tr>
 			</tbody>
 		</table>
