@@ -25,7 +25,6 @@ class HistoriaController
 			$paciente=Paciente::getById($idPaciente);
 			$aFamiliares=HistoClinica::getAntFamiliarByPaciente($idPaciente);
 			$aPersonal=HistoClinica::getAntPersonalByPaciente($idPaciente);
-			$eVisual=HistoClinica::getExaVisualByPaciente($idPaciente);
 			//var_dump($aPersonal);
 			//die();
 
@@ -51,7 +50,6 @@ class HistoriaController
 				HistoClinica::save($historia);
 				$this->saveAntFamiliares();
 				$this->saveAntPersonales();
-				$this->saveExaVisuales();
 				$_SESSION['mensaje']='Registro guardado satisfactoriamente';
 				$this->show();
 			} else {
@@ -109,7 +107,7 @@ class HistoriaController
 	public function update(){
 		$this->updateAntFamiliares();
 		$this->updateAntPersonales();
-		$this->updateExaVisuales();
+	
 		//$historia= new HistoClinica($_POST['idHistoria'],$_POST['fecha'], $_POST['numero'], $_POST['paciente']);
 
 		//var_dump($paciente);
@@ -182,17 +180,7 @@ class HistoriaController
 
 	/*** Examenes visuales***/
 	//guardar examenes visuales
-	public function saveExaVisuales(){
-		$exaVisual= new ExaVisual(null,$_POST['descripcionvisual'],$_POST['paciente'] );
-		HistoClinica::saveExaVisual($exaVisual);
-	}
-
-	//actualiza examenes visuales
-	public function updateExaVisuales(){
-		$exaVisual= new ExaVisual($_POST['idvisual'],$_POST['descripcionvisual'],$_POST['paciente'] );
-		HistoClinica::updateExaVisual($exaVisual);
-	}
-
+	
 
 	//REPORTES
 	public function reporteHistorico(){

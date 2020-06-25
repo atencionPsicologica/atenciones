@@ -118,4 +118,104 @@ class HistoClinica
 		$idMax= $histoDb['id'];
 		return $idMax;
 	}
+
+	public static function getByPaciente($idPaciente){
+		//buscar
+		$db=Db::getConnect();
+		$select=$db->prepare('SELECT * FROM histoclinicas WHERE PACIENTE=:id');
+		$select->bindParam('id',$idPaciente);
+		$select->execute();
+
+		$historiaDb=$select->fetch();
+		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'],$historiaDb['paciente']);
+		return $historia;
+	}
+
+
+	public static function saveAntPersonal($antPersonal){
+		$db=Db::getConnect();
+		//var_dump($antPersonal);
+		//die();
+			
+		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :ciclos, :embarazos, :abortos, :abusoPsico, :abusoFis, :abandono, :vicios,:descripcion, :paciente)');
+
+		$insert->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
+		$insert->bindValue('embarazos',$antPersonal->getPartos());
+		$insert->bindValue('abortos',$antPersonal->getEmbarazos());
+		$insert->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
+		$insert->bindValue('abusoFis',$antPersonal->getAbusoFis());
+		$insert->bindValue('abandono',$antPersonal->getAbandono());
+		$insert->bindValue('vicios',$antPersonal->getVicios());
+		$insert->bindValue('descripcion',$antPersonal->getDescripcion());
+		$insert->bindValue('paciente',$antPersonal->getPaciente());
+		$insert->execute();
+	}
+
+
+	public static function getAntPersonalByPaciente($idPaciente){
+		$db=Db::getConnect();
+		//ar_dump($paciente);
+		//die();
+		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id');
+		$select->bindParam('id',$idPaciente);
+		$select->execute();
+
+		$antPersonalDb=$select->fetch();
+		$antPersonal= new AntPersonal($antPersonalDb['id'], $antPersonalDb['vsexualactiva'], $antPersonalDb['embarazos'],$antPersonalDb['abortos'], $antPersonalDb['abusoPsico'], $antPersonalDb['abusoFis'],$antPersonalDb['abandono'],$antPersonalDb['vicios'], $antPersonalDb['descripcion'],$antPersonalDb['paciente']);
+		return $antPersonal;
+	}
+
+	public static function updateAntPersonal($antPersonal){
+		//var_dump($historia);
+		//die();
+		$db=Db::getConnect();
+		$update=$db->prepare('UPDATE antpersonales SET vsexualactiva=:vsexualactiva, embarazos=:embarazos, abortos=:abortos, abusoPsico=:abusoPsico, abusoFis=:abusoFis, abandono=:abandono,vicios=:vicios,descripcion=:descripcion,paciente=:paciente  WHERE id=:id');
+		$update->bindValue('id',$antPersonal->getId());
+		$update->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
+		$update->bindValue('embarazos',$antPersonal->getEmbarazos());
+		$update->bindValue('abortos',$antPersonal->getAbortos());
+		$update->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
+		$update->bindValue('abusoFis',$antPersonal->getAbusoFis());
+		$update->bindValue('abandono',$antPersonal->getAbandono());
+		$update->bindValue('vicios',$antPersonal->getVicios());
+		$update->bindValue('descripcion',$antPersonal->getDescripcion());
+		$update->bindValue('paciente',$antPersonal->getPaciente());
+		$update->execute();
+	}
+
+	public static function saveAntFamiliar($antFamiliar){
+		$db=Db::getConnect();
+		//ar_dump($paciente);
+		//die();
+			
+		$insert=$db->prepare('INSERT INTO antfamiliares VALUES(NULL, :descripcion, :paciente)');
+		$insert->bindValue('descripcion',$antFamiliar->getDescripcion());
+		$insert->bindValue('paciente',$antFamiliar->getPaciente());
+		$insert->execute();
+	}
+
+	public static function getAntFamiliarByPaciente($idPaciente){
+		$db=Db::getConnect();
+		//ar_dump($paciente);
+		//die();
+		$select=$db->prepare('SELECT * FROM antfamiliares WHERE paciente=:id');
+		$select->bindParam('id',$idPaciente);
+		$select->execute();
+
+		$antFamiliarDb=$select->fetch();
+		$antFamiliar= new AntFamiliar($antFamiliarDb['id'], $antFamiliarDb['descripcion'],$antFamiliarDb['paciente']);
+		return $antFamiliar;
+	}
+
+	public static function updateAntFamiliar($antFamiliar){
+		//var_dump($historia);
+		//die();
+		$db=Db::getConnect();
+		$update=$db->prepare('UPDATE antfamiliares SET descripcion=:descripcion,paciente=:paciente  WHERE id=:id');
+		$update->bindValue('id',$antFamiliar->getId());
+		$update->bindValue('descripcion',$antFamiliar->getDescripcion());
+		$update->bindValue('paciente',$antFamiliar->getPaciente());
+		$update->execute();
+	}
+
 }

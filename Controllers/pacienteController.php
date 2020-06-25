@@ -32,8 +32,7 @@ class PacienteController
 		//die();
 		//modificar de tal forma que muestre las consultas del dia de cada usuario por paciente.
 		$pacientes=Paciente::all($_SESSION['usuario_id']);
-
-
+		
 		//paginator
 		$lista_pacientes="";
 		$registros=4; // debe ser siempre par

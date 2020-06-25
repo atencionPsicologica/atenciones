@@ -18,9 +18,9 @@ class Paciente
 	private $email;
 	private $tposangre;
 	private $direccion;
-	private $usuario;	
+		
 
-	function __construct($id, $cedula, $nombres, $apellidos, $ocupacion, $estcivil, $genero, $fnacimiento, $email,$tposangre, $direccion,$usuario)
+	function __construct($id, $cedula, $nombres, $apellidos, $ocupacion, $estcivil, $genero, $fnacimiento, $email,$tposangre, $direccion)
 	{
 		$this->setId($id);
 		$this->setCedula($cedula);
@@ -33,7 +33,6 @@ class Paciente
 		$this->setEmail($email);
 		$this->setTposangre($tposangre);
 		$this->setDireccion($direccion);
-		$this->setUsuario($usuario);
 	}
 
 
@@ -162,13 +161,7 @@ class Paciente
 		$this->direccion = $direccion;
 	}
 
-	public function getUsuario(){
-		return $this->usuario;
-	}
 
-	public function setUsuario($usuario){
-		$this->usuario = $usuario;
-	}
 	//opciones CRUD
 
 	//la función para registrar un paciente
@@ -195,13 +188,13 @@ class Paciente
 	public static function all($idUsuario){
 		$listaPacientes =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT pa. * FROM pacientes pa, acompaniante ac, consultas con WHERE ac.id = con.acompaniante AND pa.id = con.paciente AND con.acompaniante = :id order by id');
-		$sql->bindParam(':id',$idUsuario);
+		$sql=$db->prepare('SELECT * FROM pacientes');
+		//$sql->bindParam(':id',$idUsuario);
 		$sql->execute();
 
 		// carga en la $listaPacientes cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $paciente) {
-			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion'], $paciente['acompaniante']);
+			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion']);
 		}
 		return $listaPacientes;
 	}
