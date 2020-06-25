@@ -12,6 +12,7 @@ class AntFamiliar
 
 	function __construct($id, $descripcion, $paciente )
 	{
+		
 		$this->setId($id);
 		$this->setDescripcion($descripcion);		
 		$this->setPaciente($paciente);

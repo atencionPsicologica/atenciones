@@ -32,7 +32,7 @@
 				break;
 		}
 		//llama a la acción del controlador
-		$controller->{$action }();
+		$controller->{$action}();
 	}
 
 

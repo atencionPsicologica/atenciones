@@ -18,10 +18,12 @@ class HistoriaController
 
 	public function register(){
 		$idPaciente=$_GET['id'];
-
+		
 		$historia=HistoClinica::getByPaciente($idPaciente);
 		
+		
 		if ($historia->getId()!=NULL) {//si existe la HC se va al archivo update.php
+			var_dump($historia->getId());
 			$paciente=Paciente::getById($idPaciente);
 			$aFamiliares=HistoClinica::getAntFamiliarByPaciente($idPaciente);
 			$aPersonal=HistoClinica::getAntPersonalByPaciente($idPaciente);
@@ -168,12 +170,12 @@ class HistoriaController
 	public function saveAntPersonales(){
 		//var_dump($_POST['hipertension']);
 		//die();
-		$antPersonal= new AntPersonal(null,$_POST['imenarquia'], $_POST['imenopausia'],$_POST['vsexualactiva'],$_POST['ciclos'],$_POST['gesta'], $_POST['partos'], $_POST['abortos'], $_POST['cesareas'], $_POST['fum'],$_POST['fup'], $_POST['hvivos'],$_POST['mpf'],$_POST['descripcionper'],$_POST['paciente'] );
+		$antPersonal= new AntPersonal(null, $_POST['vsexualactiva'], $_POST['embarazo'], $_POST['abortos'], $_POST['abusoPsico'],$_POST['abusoFis'], $_POST['abandono'],$_POST['vicio'],$_POST['descripcionper'],$_POST['paciente']);
 		HistoClinica::saveAntPersonal($antPersonal);
 	}
 	//actualiza antecedentes personales
 	public function updateAntPersonales(){
-		$antPersonal= new AntPersonal($_POST['idpersonal'],$_POST['imenarquia'], $_POST['imenopausia'],$_POST['vsexualactiva'],$_POST['ciclos'],$_POST['gesta'], $_POST['partos'], $_POST['abortos'], $_POST['cesareas'], $_POST['fum'],$_POST['fup'], $_POST['hvivos'],$_POST['mpf'],$_POST['descripcionper'],$_POST['paciente'] );
+		$antPersonal= new AntPersonal($_POST['idpersonal'],$_POST['vsexualactiva'],$_POST['embarazo'],$_POST['abortos'], $_POST['abusoPsico'], $_POST['abusoFis'], $_POST['abandono'], $_POST['vicio'],$_POST['descripcionper'],$_POST['paciente']);
 		HistoClinica::updateAntPersonal($antPersonal);
 	}
 
