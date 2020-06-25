@@ -3,7 +3,7 @@
         session_start(); 
     }  ?>
 <div class="container">
-	<h1>Actualizar Historia Clínica</h1>
+	<h1>Actualizar Historial del acompañante</h1>
 </div>
 <div id="exTab1" class="container">	
 	<ul  class="nav nav-pills">
@@ -16,9 +16,7 @@
 		<li>
 			<a href="#personales" data-toggle="tab">Antecedentes Personales</a>
 		</li>
-		<li>
-			<a href="#visuales" data-toggle="tab">Exámenes Visuales</a>
-		</li>
+		
 	</ul>
 
 
@@ -44,41 +42,6 @@
 		</div>
 		<div class="tab-pane" id="familiares">
 			<input type="hidden" name="idfamiliar" value="<?php echo $aFamiliares->getId(); ?>">
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="cardiopatia" <?php echo $aFamiliares->getCardiopatia(); ?> >Cardiopatía</label>
-		    </div>
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="diabetes" <?php echo $aFamiliares->getDiabetes(); ?>>Diabetes</label>
-		    </div>
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="cancer" <?php echo $aFamiliares->getCancer(); ?>>Cancer</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="enfcardiovasculares" <?php echo  $aFamiliares->getEnfcardiovasculares(); ?> >Enfermedades Cardiovasculares</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="hipertension" <?php echo $aFamiliares->getHipertension(); ?>>Hipertensión</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="enfmentales" <?php echo $aFamiliares->getEnfmentales(); ?>>Enfermedades Mentales</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="tubercolosis" <?php echo  $aFamiliares->getTubercolosis(); ?> >Tubercolosis</label>
-		    </div>
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="enfinfecciosas"  <?php echo $aFamiliares->getEnfinfecciosas(); ?>>Enfermedades Infecciosas</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="malformacion" <?php echo $aFamiliares->getMalformacion(); ?> >Malformacion</label>
-		    </div>
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="otra" <?php echo $aFamiliares->getOtra(); ?> >Otra</label>
-		    </div>
 		    <div class="form-group">
 				<label for="descripcion">Descripción:</label>
 				<textarea class="form-control" rows="4" name="descripcionfami"  placeholder="Ingrese alguna información adicional"><?php echo $aFamiliares->getDescripcion();?></textarea>
@@ -86,18 +49,7 @@
 		</div>
 		<div class="tab-pane" id="personales">
 			<input type="hidden" name="idpersonal" value="<?php echo $aPersonal->getId(); ?>">
-		    <div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="imenarquia">Edad menarquía:</label>
-					<input type="number" class="form-control" id="imenarquia" name="imenarquia" value="<?php echo $aPersonal->getImenarquia(); ?>" placeholder="Edad primera menstruación" autocomplete="off">		    	
-		    	</div>				
-			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="imenopausia">Edad menopausia:</label>
-					<input type="number" class="form-control" id="imenopausia" name="imenopausia" value="<?php echo $aPersonal->getImenopausia(); ?>" placeholder="Edad menopausia" autocomplete="off">		    	
-		    	</div>				
-			</div>
+		    
 			<div class="form-group">
 		    	<div class="col-xs-4">
 		    		<label for="vsexualactiva">Vida Sexual:</label>
@@ -106,79 +58,49 @@
 			</div>
 			<div class="form-group">
 		    	<div class="col-xs-4">
-		    		<label for="gesta">Edad gestación:</label>
-					<input type="number" class="form-control" id="gesta" name="gesta" value="<?php echo $aPersonal->getGesta(); ?>"  placeholder="Edad gestación" autocomplete="off">		    	
+		    		<label for="gesta">Embarazos:</label>
+					<input type="number" class="form-control" id="embarazo" name="embarazo" value="<?php echo $aPersonal->getEmbarazos(); ?>" placeholder="Número de embarazos" autocomplete="off">		    	
 		    	</div>				
 			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="partos">Partos:</label>
-					<input type="number" class="form-control" id="partos" name="partos" value="<?php echo $aPersonal->getPartos(); ?>"  placeholder="Número de partos" autocomplete="off">		    	
-		    	</div>				
-			</div>
+			
 			<div class="form-group">
 		    	<div class="col-xs-4">
 		    		<label for="abortos">Abortos:</label>
-					<input type="number" class="form-control" id="abortos" name="abortos" value="<?php echo $aPersonal->getAbortos(); ?>"  placeholder="Número de abortos" autocomplete="off">		    	
-		    	</div>				
-			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="cesareas">Cesáreas:</label>
-					<input type="number" class="form-control" id="cesareas" name="cesareas" value="<?php echo $aPersonal->getCesareas(); ?>"  placeholder="Número de cesareas" autocomplete="off">		    	
-		    	</div>				
-			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="hvivos">Hijos vivos:</label>
-					<input type="number" class="form-control" id="hvivos" name="hvivos" value="<?php echo $aPersonal->getHvivos(); ?>"  placeholder="Número de hijos vivos" autocomplete="off">		    	
-		    	</div>				
-			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="mpf">Método:</label>
-					<input type="mpf" class="form-control" id="mpf" name="mpf" value="<?php echo $aPersonal->getMpf(); ?>"  placeholder="Método planificación familiar" autocomplete="off">		    	
-		    	</div>				
-			</div>
-			<div class="form-group">
-		    	<div class="col-xs-4">
-		    		<label for="ciclos">Ciclos menstruación:</label>
-					<input type="number" class="form-control" id="ciclos" name="ciclos" value="<?php echo $aPersonal->getCiclos(); ?>"  placeholder="Frecuencia menstruación" autocomplete="off">					    	
+					<input type="number" class="form-control" id="abortos" name="abortos" value="<?php echo $aPersonal->getAbortos(); ?>" placeholder="Número de abortos" autocomplete="off">		    	
 		    	</div>				
 			</div>
 
 			<div class="form-group">
 		    	<div class="col-xs-4">
-		    		<label for="fum">Fecha menstruación:</label>
-					<div class="input-group input-append date" id="datePicker1" >
-		    	    	<input type="date" class="form-control" name="fum"  value="<?php echo $aPersonal->getFum(); ?>"  placeholder="Fecha última menstruación" autocomplete="off"/>
-		    	     	<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-        			</div>
-		    	</div>
+		    		<label for="abusoPsico">Abusos psicológico:</label>
+					<input type="number" class="form-control" id="abusoPsico" name="abusoPsico" value="<?php echo $aPersonal->getAbusoPsico(); ?>"  autocomplete="off">		    	
+		    	</div>				
 			</div>
 
 			<div class="form-group">
 		    	<div class="col-xs-4">
-		    		<label for="fup">Fecha parto:</label>
-					<div class="input-group input-append date" id="datePicker2" >
-		    	    	<input type="date" class="form-control" name="fup"  value="<?php echo $aPersonal->getFup(); ?>"  placeholder="Fecha último parto" autocomplete="off"/>
-		    	     	<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-        			</div>
+		    		<label for="abusoFis">Abusos físicos:</label>
+					<input type="number" class="form-control" id="abusoFis" name="abusoFis" value="<?php echo $aPersonal->getAbusoFis(); ?>" autocomplete="off">		    	
 		    	</div>				
 			</div>
 
+			<div class="form-group">
+		    	<div class="col-xs-4">
+		    		<label for="abandono">Abandono:</label>
+					<input type="number" class="form-control" id="abandono" name="abandono" value="<?php echo $aPersonal->getAbandono(); ?>"  autocomplete="off">		    	
+		    	</div>				
+			</div>
+
+			<div class="form-group">
+		    	<div class="col-xs-4">
+		    		<label for="vicio">Vicios:</label>
+					<input type="number" class="form-control" id="vicio" name="vicio" value="<?php echo $aPersonal->getvicios(); ?>"  autocomplete="off">		    	
+		    	</div>				
+			</div>
+			
 			<div class="form-group">
 				<label for="descripcion">Descripción:</label>
 				<textarea class="form-control" rows="4" name="descripcionper" required="true" placeholder="Ingrese alguna información adicional"><?php echo $aPersonal->getDescripcion(); ?> </textarea>
-			</div>
-
-
-		</div>
-       	<div class="tab-pane" id="visuales">
-       		<input type="hidden" name="idvisual" value="<?php echo $eVisual->getId(); ?>">
-       		 <div class="form-group">
-				<label for="descripcion">Valores para ojo derecho e izquierdo:</label>
-				<textarea class="form-control" rows="4" name="descripcionvisual"  placeholder="Escriba los valores para cada ojo y alguna información adicional"><?php echo $eVisual->getDescripcion() ?></textarea>
 			</div>
 		</div>
 

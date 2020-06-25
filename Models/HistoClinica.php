@@ -12,12 +12,12 @@ class HistoClinica
 	private $numero;
 	private $recomendaciones;
 	
-	function __construct($id, $fregistro, $numero, $recomendaciones)
+	function __construct($id, $fregistro, $numero, $paciente)
 	{
 		$this->setId($id);
 		$this->setFregistro($fregistro);
 		$this->setNumero($numero);
-		$this->setRecomendaciones($recomendaciones);
+		$this->setPaciente($paciente);
 	}
 
 	/***FUNCIONES Getters y Setters***/
@@ -45,12 +45,13 @@ class HistoClinica
 		$this->numero = $numero;
 	}
 
-	public function getRecomendaciones(){
-		return $this->recomendaciones;
+
+	public function getPaciente(){
+		return $this->paciente;
 	}
 
-	public function setRecomendaciones($recomendaciones){
-		$this->recomendaciones = $recomendaciones;
+	public function setPaciente($paciente){
+		$this->paciente = $paciente;
 	}
 
 	/***FUNCIONES CRUD***/
@@ -60,10 +61,10 @@ class HistoClinica
 		//var_dump($recomendaciones);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :recomendaciones)');
+		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :paciente)');
 		$insert->bindValue('fecha',$histoclinica->getFregistro());
 		$insert->bindValue('numero',$histoclinica->getNumero());
-		$insert->bindValue('recomendaciones',$histoclinica->getRecomendaciones());
+		$insert->bindValue('paciente',$histoclinica->getPaciente());
 		$insert->execute();
 	}
 
@@ -75,7 +76,7 @@ class HistoClinica
 
 		// carga en la $listaHistorias cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $historia) {
-			$listaHistorias[]= new HistoClinica($historia['id'],$historia['fregistro'], $historia['numero'],$historia['recomendaciones']);
+			$listaHistorias[]= new HistoClinica($historia['id'],$historia['fregistro'], $historia['numero'], $historia['paciente']);
 		}
 		return $listaHistorias;
 	}
@@ -89,7 +90,7 @@ class HistoClinica
 		$select->execute();
 
 		$historiaDb=$select->fetch();
-		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'],$historiaDb['recomendaciones']);
+		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'], $historiaDb['paciente']);
 		return $historia;
 	}
 
@@ -102,7 +103,7 @@ class HistoClinica
 		$select->execute();
 
 		$historiaDb=$select->fetch();
-		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'],$historiaDb['recomendaciones']);
+		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'], $historiaDb['paciente']);
 		return $historia;
 	}
 
@@ -122,12 +123,12 @@ class HistoClinica
 	public static function getByPaciente($idPaciente){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM histoclinicas WHERE PACIENTE=:id');
+		$select=$db->prepare('SELECT * FROM historial WHERE paciente =:id');
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 
 		$historiaDb=$select->fetch();
-		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'],$historiaDb['paciente']);
+		$historia= new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'], $historiaDb['paciente']);
 		return $historia;
 	}
 

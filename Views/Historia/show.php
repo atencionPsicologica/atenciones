@@ -2,7 +2,7 @@
     { 
         session_start(); 
     } ?>
-<h1>Resumen Historias Clínicas</h1>
+<h1>Resumen Historias de los acompañados</h1>
 	<form class="form-inline" action="?controller=historia&action=buscar" method="post">
 	<div class="form-group row">
 	  <div class="col-xs-4">
