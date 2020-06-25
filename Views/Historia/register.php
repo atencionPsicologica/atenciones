@@ -39,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane" id="familiares">
+		<div class="tab-pane" id="familiares">	
 		    
 		    <div class="form-group">
 				<label for="descripcion">Descripción:</label>

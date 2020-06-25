@@ -150,7 +150,7 @@ class HistoriaController
 	/*** Enfermedades familiares***/
 	//guardar las enfermedades familiares
 	public function saveAntFamiliares(){
-		$antFamiliar= new AntFamiliar(null,$_POST['cardiopatia'], $_POST['diabetes'], $_POST['cancer'], $_POST['enfcardiovasculares'], $_POST['hipertension'], $_POST['enfmentales'], $_POST['tubercolosis'], $_POST['enfinfecciosas'], $_POST['malformacion'], $_POST['otra'], $_POST['descripcionfami'],$_POST['paciente']);
+		$antFamiliar= new AntFamiliar(null, $_POST['descripcionfami'],$_POST['paciente']);
 		var_dump($antFamiliar);
 		//die();
 		HistoClinica::saveAntFamiliar($antFamiliar);
