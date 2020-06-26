@@ -23,7 +23,7 @@ class HistoriaController
 		
 		
 		if ($historia->getId()!=NULL) {//si existe la HC se va al archivo update.php
-			var_dump($historia->getId());
+			//var_dump($historia->getId());
 			$paciente=Paciente::getById($idPaciente);
 			$aFamiliares=HistoClinica::getAntFamiliarByPaciente($idPaciente);
 			$aPersonal=HistoClinica::getAntPersonalByPaciente($idPaciente);
@@ -153,7 +153,6 @@ class HistoriaController
 	//guardar las enfermedades familiares
 	public function saveAntFamiliares(){
 		$antFamiliar= new AntFamiliar(null, $_POST['descripcionfami'],$_POST['paciente']);
-		var_dump($antFamiliar);
 		//die();
 		HistoClinica::saveAntFamiliar($antFamiliar);
 	}
@@ -171,6 +170,7 @@ class HistoriaController
 		//var_dump($_POST['hipertension']);
 		//die();
 		$antPersonal= new AntPersonal(null, $_POST['vsexualactiva'], $_POST['embarazo'], $_POST['abortos'], $_POST['abusoPsico'],$_POST['abusoFis'], $_POST['abandono'],$_POST['vicio'],$_POST['descripcionper'],$_POST['paciente']);
+		
 		HistoClinica::saveAntPersonal($antPersonal);
 	}
 	//actualiza antecedentes personales

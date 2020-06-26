@@ -128,15 +128,15 @@ class HistoClinica
 		//var_dump($antPersonal);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abandono, :vicios,:descripcion, :paciente)');
+		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abadono, :vicios,:descripcion, :paciente)');
 
 		$insert->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
-		$insert->bindValue('embarazo',$antPersonal->getEmbarazos());
+		$insert->bindValue('embarazos',$antPersonal->getEmbarazos());
 		$insert->bindValue('abortos',$antPersonal->getAbortos());
 		$insert->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
 		$insert->bindValue('abusoFis',$antPersonal->getAbusoFis());
-		$insert->bindValue('abandono',$antPersonal->getAbandono());
-		$insert->bindValue('vicio',$antPersonal->getVicios());
+		$insert->bindValue('abadono',$antPersonal->getAbandono());
+		$insert->bindValue('vicios',$antPersonal->getVicios());
 		$insert->bindValue('descripcion',$antPersonal->getDescripcion());
 		$insert->bindValue('paciente',$antPersonal->getPaciente());
 		$insert->execute();
@@ -154,7 +154,7 @@ class HistoClinica
 		$antPersonalDb=$select->fetch();
 		if ($antPersonalDb != 0)
 		{
-			$antPersonal= new AntPersonal($antPersonalDb['id'], $antPersonalDb['vsexualactiva'], $antPersonalDb['embarazos'],$antPersonalDb['abortos'], $antPersonalDb['abusoPsico'], $antPersonalDb['abusoFis'],$antPersonalDb['abandono'],$antPersonalDb['vicios'], $antPersonalDb['descripcion'],$antPersonalDb['paciente']);	
+			$antPersonal= new AntPersonal($antPersonalDb['id'], $antPersonalDb['vsexualactiva'], $antPersonalDb['embarazos'],$antPersonalDb['abortos'], $antPersonalDb['abusoPsico'], $antPersonalDb['abusoFis'],$antPersonalDb['abadono'],$antPersonalDb['vicios'], $antPersonalDb['descripcion'],$antPersonalDb['paciente']);	
 		}
 		else
 		{
