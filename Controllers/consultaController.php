@@ -4,6 +4,7 @@ if(!isset($_SESSION))
         session_start(); 
     } 
 require_once('Models/Paciente.php');
+require_once('Models/Usuario.php');
 /**
 * 
 */
@@ -13,6 +14,7 @@ class ConsultaController
 
 	public function register(){
 		$paciente=Paciente::getById($_GET['id']);
+		$acompaniante=Usuario::getById($_GET['id']);
 		require_once('Views/Consulta/register.php');
 	}
 
