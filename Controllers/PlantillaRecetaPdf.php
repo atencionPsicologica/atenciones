@@ -15,7 +15,7 @@ class PlantillaRecetaPdf extends FPDF
         $this->SetXY(10, 18);
         $this->Cell(40,10,  utf8_decode('INSTRUCCIONES'));
         $this->Ln();
-       // $this->Cell(35,10,  utf8_decode('Número HC: '.$numero_hc),1, 0 , 'L' );
+        //$this->Cell(35,10,  utf8_decode('Número HC: '.$numero_hc),1, 0 , 'L' );
         //$this->Cell(55,10,  utf8_decode('Cédula Identidad: '.$cedula),1, 0 , 'L' );
         //$this->Cell(67,10,  utf8_decode('Nombres : '.$nombres),1, 0 , 'L' );
     }

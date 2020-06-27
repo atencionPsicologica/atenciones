@@ -4,11 +4,13 @@
 
       $db=Db::getConnect();
 
+      echo $_GET['fecha']." , ".$_GET['indicaciones'];
+
       //consulta
       $sql= $db->prepare('SELECT *
 		FROM recomendaciones
 		WHERE fecha=:fecha
-		AND paciente=:paciente');
+		AND consultas_id=:consulta');
       $sql->bindParam(':fecha',$_GET['fecha']);
       $sql->bindParam(':consulta',$_GET['consulta']);
       $sql->execute();
