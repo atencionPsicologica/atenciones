@@ -13,7 +13,7 @@
 		<li>
        		<a  href="#consulta" data-toggle="tab">Consulta</a>
 		</li>
-		<li>
+		<!--li>
 			<a href="#signos" data-toggle="tab">Signos Vitales</a>
 		</li>
 		<li>
@@ -24,7 +24,7 @@
 		</li>
 		<li>
 			<a href="#complementarios" data-toggle="tab">Exámenes Complementarios</a>
-		</li>
+		</li-->
 		<li>
 			<a href="#receta" data-toggle="tab">Receta</a>
 		</li>
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane" id="signos">
+		<!--div class="tab-pane" id="signos">
 		    <div class="form-group">
 		    	<div class="col-xs-6">
 		    		<label for="prearterial">Presión arterial:</label>
@@ -181,13 +181,13 @@
 					<textarea class="form-control" rows="5" name="descripcionexacompl"  placeholder="Ingrese los exámenes adicionales, laboratorio, radiografías etc."></textarea>
 				</div>			
 			</div>
-		</div>
+		</div-->
 
 		<div class="tab-pane" id="receta">
 			<div class="container">	
 				<div class="form-group">
-					<label for="medicamentos">Medicamentos:</label>
-					<textarea class="form-control" rows="5" name="medicamentos"  placeholder="Ingrese los medicamentos."></textarea>
+					<label for="medicamentos">Tareas:</label>
+					<textarea class="form-control" rows="5" name="medicamentos"  placeholder="Ingrese las tareas para asignar."></textarea>
 				</div>			
 			</div>
 			<div class="container">	

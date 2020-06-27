@@ -22,6 +22,7 @@ class Consulta
 		$this->setDiagnostico($diagnostico);
 		$this->setPrescripcion($prescripcion);
 		$this->setPaciente($paciente);
+		$this->setAcompaniante($acompaniante);
 	}
 
 
@@ -151,7 +152,7 @@ class Consulta
 		$select->execute();
 		//asignarlo al objeto usuario
 		$consultaDb=$select->fetch();
-		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consulta['acompaniante']);
+		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consultaDb['acompaniante']);
 		//var_dump($usuario);
 		//die();
 		return $consulta;
@@ -173,7 +174,7 @@ class Consulta
 
 	/***FUNCIONES CRUD RECETA***/
 	//la función para registrar LA RECETA
-	public static function saveRecomendaciones($recomendaciones){
+	public static function saveReceta($recomendaciones){
 		$db=Db::getConnect();
 		//var_dump($exaComplementario);
 		//die();
@@ -186,7 +187,7 @@ class Consulta
 		$insert->execute();
 	}
 
-	public static function updateRecomendaciones($recomendaciones){
+	public static function updateReceta($recomendaciones){
 		//var_dump($exaFisico);
 		//die();
 		$db=Db::getConnect();
@@ -198,7 +199,7 @@ class Consulta
 	}
 
 	//la función para obtener las recetas
-	public static function getByIdRecomendaciones($consultas, $fechaConsulta){
+	public static function getByIdReceta($consultas, $fechaConsulta){
 		//buscar
 		$db=Db::getConnect();
 		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas=:consultas AND fecha=:fecha');
@@ -207,7 +208,7 @@ class Consulta
 		$select->execute();
 		//asignarlo al objeto
 		$recomendacionesDb=$select->fetch();
-		$recomendaciones= new Recomendacion($recomendacionesDb['id'],$recomendacionesDb['fecha'],$recomendacionesDb['tareas'],$recomendacionesDb['indicaciones'],$recomendacionesDb['consultas']);
+		$recomendaciones= new Receta($recomendacionesDb['id'],$recomendacionesDb['fecha'],$recomendacionesDb['tareas'],$recomendacionesDb['indicaciones'],$recomendacionesDb['consultas']);
 		//var_dump($usuario);
 		//die();
 		return $recomendaciones;

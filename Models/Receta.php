@@ -4,7 +4,7 @@
 * Autor: Elivar Largo
 * Sitio Web: wwww.ecodeup.com
 */
-class Recomendacion
+class Receta
 {
 	private $id;
 	private $fecha;
