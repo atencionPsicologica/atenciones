@@ -159,7 +159,7 @@ class HistoriaController
 
 	//actualizar las enfermedades familiares
 	public function updateAntFamiliares(){		
-		$antFamiliar= new AntFamiliar($_POST['idfamiliar'],$_POST['cardiopatia'], $_POST['diabetes'], $_POST['cancer'], $_POST['enfcardiovasculares'], $_POST['hipertension'], $_POST['enfmentales'], $_POST['tubercolosis'], $_POST['enfinfecciosas'], $_POST['malformacion'], $_POST['otra'], $_POST['descripcionfami'],$_POST['paciente']);
+		$antFamiliar= new AntFamiliar($_POST['idfamiliar'], $_POST['descripcionfami'],$_POST['paciente']);
 		
 		HistoClinica::updateAntFamiliar($antFamiliar);
 	}

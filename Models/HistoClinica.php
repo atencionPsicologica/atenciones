@@ -117,7 +117,7 @@ class HistoClinica
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 		$historiaDb=$select->fetch();
-		$historia = new HistoClinica($historiaDb['id'],$historiaDb['fregistro'],$historiaDb['numero'],$historiaDb['paciente']);		
+		$historia = new HistoClinica($historiaDb['id']??null,$historiaDb['fregistro']??null,$historiaDb['numero']??null,$historiaDb['paciente']??null);	
 		return $historia;
 		
 	}
@@ -152,15 +152,8 @@ class HistoClinica
 		$select->execute();
 
 		$antPersonalDb=$select->fetch();
-		if ($antPersonalDb != 0)
-		{
-			$antPersonal= new AntPersonal($antPersonalDb['id'], $antPersonalDb['vsexualactiva'], $antPersonalDb['embarazos'],$antPersonalDb['abortos'], $antPersonalDb['abusoPsico'], $antPersonalDb['abusoFis'],$antPersonalDb['abadono'],$antPersonalDb['vicios'], $antPersonalDb['descripcion'],$antPersonalDb['paciente']);	
-		}
-		else
-		{
-			$antPersonal = null;
-		}
-		
+		$antPersonal= new AntPersonal($antPersonalDb['id']??null, $antPersonalDb['vsexualactiva']??null, $antPersonalDb['embarazos']??null,$antPersonalDb['abortos']??null, $antPersonalDb['abusoPsico']??null, $antPersonalDb['abusoFis']??null,$antPersonalDb['abadono']??null,$antPersonalDb['vicios']??null, $antPersonalDb['descripcion']??null,$antPersonalDb['paciente']??null);	
+		$antPersonal = null;
 		return $antPersonal;
 	}
 
@@ -168,14 +161,14 @@ class HistoClinica
 		//var_dump($historia);
 		//die();
 		$db=Db::getConnect();
-		$update=$db->prepare('UPDATE antpersonales SET vsexualactiva=:vsexualactiva, embarazos=:embarazos, abortos=:abortos, abusoPsico=:abusoPsico, abusoFis=:abusoFis, abandono=:abandono,vicios=:vicios,descripcion=:descripcion,paciente=:paciente  WHERE id=:id');
+		$update=$db->prepare('UPDATE antpersonales SET vsexualactiva=:vsexualactiva, embarazos=:embarazos, abortos=:abortos, abusoPsico=:abusoPsico, abusoFis=:abusoFis, abadono=:abadono,vicios=:vicios,descripcion=:descripcion,paciente=:paciente  WHERE id=:id');
 		$update->bindValue('id',$antPersonal->getId());
 		$update->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
 		$update->bindValue('embarazos',$antPersonal->getEmbarazos());
 		$update->bindValue('abortos',$antPersonal->getAbortos());
 		$update->bindValue('abusoPsico',$antPersonal->getAbusoPsico());
 		$update->bindValue('abusoFis',$antPersonal->getAbusoFis());
-		$update->bindValue('abandono',$antPersonal->getAbandono());
+		$update->bindValue('abadono',$antPersonal->getAbandono());
 		$update->bindValue('vicios',$antPersonal->getVicios());
 		$update->bindValue('descripcion',$antPersonal->getDescripcion());
 		$update->bindValue('paciente',$antPersonal->getPaciente());
@@ -202,15 +195,7 @@ class HistoClinica
 		$select->execute();
 
 		$antFamiliarDb=$select->fetch();
-		if ($antFamiliarDb != 0)
-		{
-			$antFamiliar= new AntFamiliar($antFamiliarDb['id'], $antFamiliarDb['descripcion'],$antFamiliarDb['paciente']);
-		}
-		else
-		{
-			$antFamiliar = null;
-		}
-		
+		$antFamiliar= new AntFamiliar($antFamiliarDb['id']??null, $antFamiliarDb['descripcion']??null,$antFamiliarDb['paciente']??null);
 		return $antFamiliar;
 	}
 
