@@ -8,17 +8,17 @@ class Receta
 {
 	private $id;
 	private $fecha;
-	private $medicamentos;
+	private $tareas;
 	private $indicaciones;	
-	private $paciente;
+	private $consulta;
 	
-	function __construct($id, $fecha,$medicamentos,$indicaciones, $paciente)
+	function __construct($id, $fecha,$tareas,$indicaciones, $consulta)
 	{
 		$this->setId($id);
 		$this->setFecha($fecha);
-		$this->setMedicamentos($medicamentos);
+		$this->setTareas($tareas);
 		$this->setIndicaciones($indicaciones);		
-		$this->setPaciente($paciente);		
+		$this->setConsulta($consulta);		
 	}
 
 	//Getters y Setters
@@ -46,20 +46,20 @@ class Receta
 		$this->indicaciones = $indicaciones;
 	}
 
-	public function getMedicamentos(){
-		return $this->medicamentos;
+	public function getTareas(){
+		return $this->tareas;
 	}
 
-	public function setMedicamentos($medicamentos){
-		$this->medicamentos = $medicamentos;
+	public function setTareas($tareas){
+		$this->tareas = $tareas;
 	}
 
-	public function getPaciente(){
-		return $this->paciente;
+	public function getConsulta(){
+		return $this->consulta;
 	}
 
-	public function setPaciente($paciente){
-		$this->paciente = $paciente;
+	public function setConsulta($consulta){
+		$this->consulta = $consulta;
 	}
 
 	//opciones CRUD

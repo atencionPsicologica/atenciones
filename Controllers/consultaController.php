@@ -4,7 +4,8 @@ if(!isset($_SESSION))
         session_start(); 
     } 
 require_once('Models/Paciente.php');
-require_once('Models/Usuario.php'); 
+require_once('Models/Usuario.php');
+require_once('Models/Consulta.php'); 
 /**
 * 
 */
@@ -27,7 +28,8 @@ class ConsultaController
 		//$this->saveSistemas();
 		//$this->saveExaFisicos();
 		//$this->saveExaComplementarios();
-		$this->saveRecetas();
+		//$idLastQueryInserted = ;
+		$this->saveRecetas(Consulta::getLastId());
 		$_SESSION['mensaje']='Registro guardado satisfactoriamente';
 		$this->show();
 	}
@@ -115,8 +117,8 @@ class ConsultaController
 
 	}
 
-	public function saveRecetas(){
-		$receta= new Receta(null,$_POST['fecha'],$_POST['medicamentos'],$_POST['indicaciones'],$_POST['idpaciente']);
+	public function saveRecetas($id){
+		$receta= new Receta(null,$_POST['fecha'],$_POST['tareas'],$_POST['indicaciones'],$id);
 		//var_dump($sigVital);
 		//die();
 		Consulta::saveReceta($receta);

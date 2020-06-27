@@ -111,7 +111,7 @@ class Consulta
 
 		// carga en la $listaConsultas cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $consulta) {
-			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante']);
+			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante_id']);
 		}
 		return $listaConsultas;
 	}
@@ -159,6 +159,23 @@ class Consulta
 	}
 
 
+	public static function getLastId(){
+		//buscar
+		$db=Db::getConnect();
+		$select=$db->prepare('SELECT id FROM `consultas` ORDER BY id DESC LIMIT 1');
+		$select->execute();
+		//asignarlo al objeto usuario
+		$consultaDb=$select->fetchAll();
+		$consulta = null;
+		foreach ($consultaDb as $cDB) {
+			$consulta .= $cDB['id'];
+		}
+		
+		return $consulta;
+	}
+
+
+
 	public static function update($consulta){
 		//var_dump();
 		//die();
@@ -176,15 +193,16 @@ class Consulta
 	//la función para registrar LA RECETA
 	public static function saveReceta($recomendaciones){
 		$db=Db::getConnect();
-		//var_dump($exaComplementario);
+		//var_dump($recomendaciones);
 		//die();
 		
-		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consultas)');
+		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta)');
 		$insert->bindValue('fecha',$recomendaciones->getFecha());
 		$insert->bindValue('tareas',$recomendaciones->getTareas());
 		$insert->bindValue('indicaciones',$recomendaciones->getIndicaciones());
-		$insert->bindValue('consultas',$recomendaciones->getConsultas());
+		$insert->bindValue('consulta',$recomendaciones->getConsulta());
 		$insert->execute();
+		
 	}
 
 	public static function updateReceta($recomendaciones){

@@ -64,7 +64,7 @@
 				    <input type="fecha" class="form-control" id="fecha" name="fecha"  value="<?php echo date('Y-m-d h:i:s') ?>" readonly="false">
 				</div>
 				<div class="form-group">
-					<label for="enfactual">Enfermedad o problema actual:</label>
+					<label for="enfactual">Problema actual:</label>
 					<textarea class="form-control" rows="4" name="enfactual" required="true" placeholder="CRONOLOGIA, LOCALIZACIÓN, CARACTERÍSTICAS, INTENSIDAD, CAUSA APARENTE, FACTORES QUE AGRAVAN O MEJORAN, SÍNTOMAS ASOCIADOS, EVOLUCIÓN, MEDICAMENTOS QUE RECIBE, RESULTADOS DE EXAMENES ANTERIORES, CONDICION ACTUAL."></textarea>
 				</div>
 				<div class="form-group">
@@ -187,8 +187,8 @@
 		<div class="tab-pane" id="receta">
 			<div class="container">	
 				<div class="form-group">
-					<label for="medicamentos">Tareas:</label>
-					<textarea class="form-control" rows="5" name="medicamentos"  placeholder="Ingrese las tareas para asignar."></textarea>
+					<label for="tareas">Tareas:</label>
+					<textarea class="form-control" rows="5" name="tareas"  placeholder="Ingrese las tareas para asignar."></textarea>
 				</div>			
 			</div>
 			<div class="container">	
