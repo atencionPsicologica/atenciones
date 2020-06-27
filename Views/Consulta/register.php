@@ -42,6 +42,7 @@
 				</div>
 				<div class="form-group">					
 					<input type="hidden" name="idpaciente" value="<?php echo $paciente->getId();?>">
+					<input type="hidden" name="idacompaniante" value="<?php echo $acompaniante->getId();?>">
 			  		<label for="nombres">Nombres:</label>
 				    <input type="nombres" class="form-control" id="nombres" name="nombres"  readonly="false" value="<?php echo $paciente->getNombres().' '.$paciente->getApellidos(); ?>">
 				</div>

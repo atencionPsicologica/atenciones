@@ -4,7 +4,7 @@ if(!isset($_SESSION))
         session_start(); 
     } 
 require_once('Models/Paciente.php');
-require_once('Models/Usuario.php');
+require_once('Models/Usuario.php'); 
 /**
 * 
 */
