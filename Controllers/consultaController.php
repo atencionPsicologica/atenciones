@@ -16,6 +16,7 @@ class ConsultaController
 	public function register(){
 		$paciente=Paciente::getById($_GET['id']);
 		$acompaniante=Usuario::getById($_GET['id']);
+		
 		require_once('Views/Consulta/register.php');
 	}
 
@@ -76,14 +77,17 @@ class ConsultaController
 
 	public function showupdate(){
 		$id=$_GET['id'];
+		$x = $_SESSION['usuario_id'];
 		//obtengo el paciente, la consulta, signos vitales, los datos sobre los sistemas y examenes fisicos, para esa consulta
 		$paciente=Paciente::getById($_GET['paciente']);
+		$acompaniante=Usuario::getById($_SESSION['usuario_id']);
+		
 		$consulta=Consulta::getById($id);
 		//$vitales=Consulta::getByIdSigVital($paciente->getId(),$consulta->getFecha());
 		//$sistemas=Consulta::getByIdSistema($paciente->getId(),$consulta->getFecha());
 		//$fisico=Consulta::getByIdFisico($paciente->getId(),$consulta->getFecha());
 		//$complementario=Consulta::getByIdComplementario($paciente->getId(),$consulta->getFecha());
-		$receta=Consulta::getByIdReceta($paciente->getId(),$consulta->getFecha());
+		$receta=Consulta::getByIdReceta($consulta->getId(),$consulta->getFecha());
 		require_once('Views/Consulta/update.php');
 		//Usuario::update($usuario);
 		//header('Location: ../index.php');
@@ -97,7 +101,7 @@ class ConsultaController
 		//$this->updateSistemas();
 		//$this->updateExaFisicos();
 		//$this->updateExaComplementarios();
-		$this->updateRecetas();
+		$this->updateRecetas($_POST['idconsulta']);
 		$_SESSION['mensaje']='Registro actualizado satisfactoriamente';
 		$this->show();
 	}
@@ -124,8 +128,8 @@ class ConsultaController
 		Consulta::saveReceta($receta);
 	}
 
-	public function updateRecetas(){
-		$receta= new Receta($_POST['idreceta'],$_POST['fecha'],$_POST['medicamentos'],$_POST['indicaciones'],$_POST['idpaciente']);
+	public function updateRecetas($id){
+		$receta= new Receta($_POST['idreceta'],$_POST['fecha'],$_POST['tareas'],$_POST['indicaciones'],$id);
 		//var_dump($exaFisico);
 		//die();
 		Consulta::updateReceta($receta);

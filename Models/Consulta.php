@@ -152,7 +152,7 @@ class Consulta
 		$select->execute();
 		//asignarlo al objeto usuario
 		$consultaDb=$select->fetch();
-		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consultaDb['acompaniante']);
+		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consultaDb['acompaniante_id']);
 		//var_dump($usuario);
 		//die();
 		return $consulta;
@@ -220,13 +220,13 @@ class Consulta
 	public static function getByIdReceta($consultas, $fechaConsulta){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas=:consultas AND fecha=:fecha');
-		$select->bindValue('consultas',$consultas);
+		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas_id =:consulta AND fecha=:fecha');
+		$select->bindValue('consulta',$consultas);
 		$select->bindValue('fecha',$fechaConsulta);
 		$select->execute();
 		//asignarlo al objeto
 		$recomendacionesDb=$select->fetch();
-		$recomendaciones= new Receta($recomendacionesDb['id'],$recomendacionesDb['fecha'],$recomendacionesDb['tareas'],$recomendacionesDb['indicaciones'],$recomendacionesDb['consultas']);
+		$recomendaciones= new Receta($recomendacionesDb['id']??null,$recomendacionesDb['fecha']??null,$recomendacionesDb['tareas']??null,$recomendacionesDb['indicaciones']??null,$recomendacionesDb['consultas']??null);
 		//var_dump($usuario);
 		//die();
 		return $recomendaciones;

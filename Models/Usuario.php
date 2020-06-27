@@ -168,7 +168,7 @@ class Usuario
 		$select->execute();
 		//asignarlo al objeto usuario
 		$acompanianteDb=$select->fetch();
-		$acompaniante= new Usuario($acompanianteDb['id'],$acompanianteDb['alias'],$acompanianteDb['nombres'],$acompanianteDb['apellidos'],$acompanianteDb['email'], $acompanianteDb['clave'],$acompanianteDb['pregunta'],$acompanianteDb['respuesta']);
+		$acompaniante= new Usuario($acompanianteDb['id']??null,$acompanianteDb['alias']??null,$acompanianteDb['nombres']??null,$acompanianteDb['apellidos']??null,$acompanianteDb['email']??null, $acompanianteDb['clave']??null,$acompanianteDb['pregunta']??null,$acompanianteDb['respuesta']??null);
 		//var_dump($usuario);
 		//die();
 		return $acompaniante;

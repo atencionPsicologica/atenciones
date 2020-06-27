@@ -13,7 +13,7 @@
 		<li>
        		<a  href="#consulta" data-toggle="tab">Consulta</a>
 		</li>
-		<li>
+		<!--li>
 			<a href="#signos" data-toggle="tab">Signos Vitales</a>
 		</li>
 		<li>
@@ -24,7 +24,7 @@
 		</li>
 		<li>
 			<a href="#complementarios" data-toggle="tab">Exámenes Complementarios</a>
-		</li>
+		</li-->
 		<li>
 			<a href="#receta" data-toggle="tab">Receta</a>
 		</li>
@@ -41,6 +41,7 @@
 				</div>
 				<div class="form-group">					
 					<input type="hidden" name="idpaciente" value="<?php echo $paciente->getId();?>">
+					<input type="hidden" name="idacompaniante" value="<?php echo $acompaniante->getId();?>">
 			  		<label for="nombres">Nombres:</label>
 				    <input type="nombres" class="form-control" id="nombres" name="nombres"  readonly="false" value="<?php echo $paciente->getNombres().' '.$paciente->getApellidos(); ?>">
 				</div>
@@ -76,123 +77,123 @@
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane" id="signos">
+		<!--div class="tab-pane" id="signos">
 		    <div class="form-group">
-		    	<input type="hidden" name="idsignos" value="<?php echo $vitales->getId();?>">
+		    	<input type="hidden" name="idsignos" value="<?php //echo $vitales->getId();?>">
 		    	<div class="col-xs-6">
 		    		<label for="prearterial">Presión arterial:</label>
-					<input type="text" class="form-control"  name="prearterial" required="true" value="<?php echo $vitales->getPrearterial() ?>" readonly="true" >		    	
+					<input type="text" class="form-control"  name="prearterial" required="true" value="<?php //echo $vitales->getPrearterial() ?>" readonly="true" >		    	
 		    	</div>				
 			</div>
 			<div class="form-group">
 				<div class="col-xs-6">
 		    		<label for="pulso">Pulso:</label>
-					<input type="number" class="form-control" id="pulso" name="pulso" required="true" value="<?php echo $vitales->getPulso(); ?>" readonly="true">		    	
+					<input type="number" class="form-control" id="pulso" name="pulso" required="true" value="<?php //echo $vitales->getPulso(); ?>" readonly="true">		    	
 		    	</div>
 		    </div>
 
 		    <div class="form-group">
 		        <div class="col-xs-6">
 		    		<label for="peso">Peso (Kilogramos):</label>
-					<input type="number" class="form-control" id="peso" name="peso" required="true" step="0.01" value="<?php echo $vitales->getPeso(); ?>" readonly="true">		    	
+					<input type="number" class="form-control" id="peso" name="peso" required="true" step="0.01" value="<?php //echo $vitales->getPeso(); ?>" readonly="true">		    	
 				</div>
 		    </div>
 
 		    <div class="form-group">
 		        <div class="col-xs-6">
 		    		<label for="talla">Talla (centimetros):</label>
-					<input type="number" class="form-control" id="talla" name="talla" required="true" step="0.01" value="<?php echo $vitales->getTalla(); ?>" readonly="true">		    	
+					<input type="number" class="form-control" id="talla" name="talla" required="true" step="0.01" value="<?php //echo $vitales->getTalla(); ?>" readonly="true">		    	
 				</div>
 		    </div>
 
 
 		    <div class="form-group">
 				<label for="descripcion">Descripción:</label>
-				<textarea class="form-control" rows="4" name="descripcionsignos"  ><?php echo $vitales->getDescripcion(); ?></textarea>
+				<textarea class="form-control" rows="4" name="descripcionsignos"  ><?php //echo $vitales->getDescripcion(); ?></textarea>
 			</div>
 		</div>
 		<div class="tab-pane" id="sistemas">
-			<input type="hidden" name="idsistemas" value="<?php echo $sistemas->getId();?>">
+			<input type="hidden" name="idsistemas" value="<?php //echo $sistemas->getId();?>">
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="sentidos" <?php echo $sistemas->getSentidos(); ?>>Organos de los Sentidos</label>
+		    	<label><input type="checkbox" name="sentidos" <?php //echo $sistemas->getSentidos(); ?>>Organos de los Sentidos</label>
 		    </div>
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="respiratorio" <?php echo $sistemas->getRespiratorio(); ?>>Respiratorio</label>
+		    	<label><input type="checkbox" name="respiratorio" <?php //echo $sistemas->getRespiratorio(); ?>>Respiratorio</label>
 		    </div>
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="cardiovascular" <?php echo $sistemas->getCardiovascular(); ?> >Cardio Vasculares</label>
-		    </div>
-
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="digestivo" <?php echo $sistemas->getDigestivo(); ?> >Digestivo</label>
+		    	<label><input type="checkbox" name="cardiovascular" <?php //echo $sistemas->getCardiovascular(); ?> >Cardio Vasculares</label>
 		    </div>
 
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="genital" <?php echo $sistemas->getGenital(); ?> >Genital</label>
-		    </div>
-		    <div class="checkbox">
-		    	<label><input type="checkbox" name="urinario" <?php echo $sistemas->getUrinario(); ?> >Urinario</label>
+		    	<label><input type="checkbox" name="digestivo" <?php //echo $sistemas->getDigestivo(); ?> >Digestivo</label>
 		    </div>
 
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="mesquletico"<?php echo $sistemas->getMesqueletico(); ?> >Musculo Esqueletico</label>
+		    	<label><input type="checkbox" name="genital" <?php //echo $sistemas->getGenital(); ?> >Genital</label>
 		    </div>
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="endocrino" <?php echo $sistemas->getEndocrino(); ?> >Endocrino</label>
+		    	<label><input type="checkbox" name="urinario" <?php //echo $sistemas->getUrinario(); ?> >Urinario</label>
+		    </div>
+
+		    <div class="checkbox">
+		    	<label><input type="checkbox" name="mesquletico"<?php //echo $sistemas->getMesqueletico(); ?> >Musculo Esqueletico</label>
 		    </div>
 		    <div class="checkbox">
-		    	<label><input type="checkbox" name="linfatico" <?php echo $sistemas->getLinfatico(); ?> >Linfático</label>
+		    	<label><input type="checkbox" name="endocrino" <?php //echo $sistemas->getEndocrino(); ?> >Endocrino</label>
+		    </div>
+		    <div class="checkbox">
+		    	<label><input type="checkbox" name="linfatico" <?php //echo $sistemas->getLinfatico(); ?> >Linfático</label>
 		    </div>
 
 		    <div class="form-group">
 				<label for="descripcion">Descripción:</label>
-				<textarea class="form-control" rows="3" name="descripcionsistemas" ><?php echo $sistemas->getDescripcion(); ?></textarea>
+				<textarea class="form-control" rows="3" name="descripcionsistemas" ><?php //echo $sistemas->getDescripcion(); ?></textarea>
 			</div>
 		</div>
        	<div class="tab-pane" id="fisicos">
        		 <div class="form-group">
-       		 	<input type="hidden" name="idfisicos" value="<?php echo $fisico->getId();?>">
+       		 	<input type="hidden" name="idfisicos" value="<?php //echo $fisico->getId();?>">
 				<label for="cabeza">Cabeza:</label>
-				<textarea class="form-control" rows="3" name="cabeza" ><?php echo $fisico->getCabeza() ?></textarea>
+				<textarea class="form-control" rows="3" name="cabeza" ><?php //echo $fisico->getCabeza() ?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="cuello">Cuello:</label>
-				<textarea class="form-control" rows="3" name="cuello"  ><?php echo $fisico->getCuello(); ?></textarea>
+				<textarea class="form-control" rows="3" name="cuello"  ><?php //echo $fisico->getCuello(); ?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="torax">Torax:</label>
-				<textarea class="form-control" rows="3" name="torax"><?php echo  $fisico->getTorax();?></textarea>
+				<textarea class="form-control" rows="3" name="torax"><?php //echo  $fisico->getTorax();?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="abdomen">Abdomen:</label>
-				<textarea class="form-control" rows="3" name="abdomen"  ><?php echo $fisico->getAbdomen(); ?></textarea>
+				<textarea class="form-control" rows="3" name="abdomen"  ><?php //echo $fisico->getAbdomen(); ?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="miembros">Miembros:</label>
-				<textarea class="form-control" rows="3" name="miembros" ><?php echo $fisico->getMiembros(); ?></textarea>
+				<textarea class="form-control" rows="3" name="miembros" ><?php //echo $fisico->getMiembros(); ?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="genitales">Genitales:</label>
-				<textarea class="form-control" rows="3" name="genitales" ><?php echo $fisico->getGenitales(); ?></textarea>
+				<textarea class="form-control" rows="3" name="genitales" ><?php //echo $fisico->getGenitales(); ?></textarea>
 			</div>
 		</div>
 
 		<div class="tab-pane" id="complementarios">
 			<div class="container">	
 				<div class="form-group">
-					<input type="hidden" name="idcomplementario" value="<?php echo $complementario->getId();?>">
+					<input type="hidden" name="idcomplementario" value="<?php //echo $complementario->getId();?>">
 					<label for="exadicionales">Exámenes Adicionales:</label>
-					<textarea class="form-control" rows="5" name="descripcionexacompl" ><?php echo $complementario->getDescripcion(); ?></textarea>
+					<textarea class="form-control" rows="5" name="descripcionexacompl" ><?php //echo $complementario->getDescripcion(); ?></textarea>
 				</div>			
 			</div>
-		</div>
+		</div-->
 
 		<div class="tab-pane" id="receta">
 			<div class="container">	
 				<div class="form-group">
 					<input type="hidden" name="idreceta" value="<?php echo $receta->getId();?>">
-					<label for="medicamentos">Medicamentos:</label>
-					<textarea class="form-control" rows="5" name="medicamentos" ><?php echo $receta->getMedicamentos(); ?></textarea>
+					<label for="tareas">Tareas:</label>
+					<textarea class="form-control" rows="5" name="tareas" ><?php echo $receta->getTareas(); ?></textarea>
 				</div>			
 			</div>
 			<div class="container">	
