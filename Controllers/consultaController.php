@@ -15,7 +15,7 @@ class ConsultaController
 
 	public function register(){
 		$paciente=Paciente::getById($_GET['id']);
-		$acompaniante=Usuario::getById($_GET['id']);
+		$acompaniante=Usuario::getById($_SESSION['usuario_id']);
 		
 		require_once('Views/Consulta/register.php');
 	}

@@ -153,7 +153,7 @@ class HistoClinica
 
 		$antPersonalDb=$select->fetch();
 		$antPersonal= new AntPersonal($antPersonalDb['id']??null, $antPersonalDb['vsexualactiva']??null, $antPersonalDb['embarazos']??null,$antPersonalDb['abortos']??null, $antPersonalDb['abusoPsico']??null, $antPersonalDb['abusoFis']??null,$antPersonalDb['abadono']??null,$antPersonalDb['vicios']??null, $antPersonalDb['descripcion']??null,$antPersonalDb['paciente']??null);	
-		$antPersonal = null;
+		
 		return $antPersonal;
 	}
 

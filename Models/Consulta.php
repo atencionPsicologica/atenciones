@@ -98,8 +98,9 @@ class Consulta
 		$insert->bindValue('diagnostico',$consulta->getDiagnostico());
 		$insert->bindValue('prescripcion',$consulta->getPrescripcion());
 		$insert->bindValue('paciente',$consulta->getPaciente());
-		$insert->bindValue('acompaniante',$consulta->getPaciente());
+		$insert->bindValue('acompaniante',$consulta->getAcompaniante());
 		$insert->execute();
+		
 	}
 
 	//función para obtener todas las consultas
