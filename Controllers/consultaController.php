@@ -1,6 +1,8 @@
 <?php 
 if(!isset($_SESSION)) 
     { 
+		// validación de sesión si los datos son correctos
+		// si hay sessión abierta y si se está conectada al servidor
         session_start(); 
     } 
 require_once('Models/Paciente.php');
@@ -77,9 +79,10 @@ class ConsultaController
 
 	public function showupdate(){
 		$id=$_GET['id'];
-		$x = $_SESSION['usuario_id'];
+		//$x = $_SESSION['usuario_id'];
 		//obtengo el paciente, la consulta, signos vitales, los datos sobre los sistemas y examenes fisicos, para esa consulta
 		$paciente=Paciente::getById($_GET['paciente']);
+		//$_SESSION['x'] se guarda todo la información del logeado.
 		$acompaniante=Usuario::getById($_SESSION['usuario_id']);
 		
 		$consulta=Consulta::getById($id);
