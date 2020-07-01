@@ -196,12 +196,14 @@ class Consulta
 		$db=Db::getConnect();
 		//var_dump($recomendaciones);
 		//die();
-		
+		//codigo sql
 		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta)');
+
 		$insert->bindValue('fecha',$recomendaciones->getFecha());
 		$insert->bindValue('tareas',$recomendaciones->getTareas());
 		$insert->bindValue('indicaciones',$recomendaciones->getIndicaciones());
 		$insert->bindValue('consulta',$recomendaciones->getConsulta());
+
 		$insert->execute();
 		
 	}
@@ -221,7 +223,9 @@ class Consulta
 	public static function getByIdReceta($consultas, $fechaConsulta){
 		//buscar
 		$db=Db::getConnect();
+
 		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas_id =:consulta AND fecha=:fecha');
+
 		$select->bindValue('consulta',$consultas);
 		$select->bindValue('fecha',$fechaConsulta);
 		$select->execute();
