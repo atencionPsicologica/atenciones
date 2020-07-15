@@ -24,6 +24,14 @@
 	<!-- Custom -->
 	<script src="assets/custom/nick-test.js?1.1.0"></script>
 
+	<!-- librerias para calendario -->
+	<script src="assets/lib/jquery.min.js"  ></script>
+	<script src="assets/lib/moment.min.js" >
+	</script>
+	<script src="assets/js/fullcalendar.min.js" ></script>
+	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
+
+
 </head>
 <body>
 <header>

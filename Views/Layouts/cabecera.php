@@ -32,6 +32,9 @@
 						<li><a href="?controller=consulta&action=show">Ver consultas</a></li>
 					</ul>
 				</li>
+				<li >
+					<a href="?controller=usuario&action=welcome">Agenda<span ></span></a>
+				</li>
 			
 		<?php } ?>
 			</ul>		
