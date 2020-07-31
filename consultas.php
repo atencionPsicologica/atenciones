@@ -13,5 +13,5 @@ require_once('Models/Usuario.php');
 $x = new UsuarioController();
 $lista = $x->list();
 echo $lista;
-
+//cambbio satisfactorio xD
 ?>
