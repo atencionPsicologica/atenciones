@@ -80,8 +80,15 @@ class UsuarioController
 		require_once('Views/User/error.php');
 	} 
 	public function welcome(){
+			
 		require_once('Views/bienvenido.php');
 	} 
+	public function list()
+	{
+		$lista = Usuario::getConsultas($_SESSION['usuario_id']);	
+		return $lista;
+	}
+
 
 	public function showLogin(){
 		require_once('Views/User/login.php');
@@ -172,3 +179,4 @@ class UsuarioController
         return $this;
     }
 }
+

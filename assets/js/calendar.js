@@ -10,6 +10,8 @@ $(document).ready(function(){
             $('#exampleModal').modal();
         },
         */
+       events: 'http://localhost/atenciones/consultas.php',
+       /*
         eventSources: [{
             events: [
                 {
@@ -36,6 +38,7 @@ $(document).ready(function(){
             color:"blue",
             textColor: "white"
         }],
+        */
         eventClick:function(calEvent, jsEvent, view){
             $('#tituloConsulta').html(calEvent.title);
             $('#diagnosticoConsulta').html(calEvent.diagnostico);

@@ -2,7 +2,8 @@
 	if(!isset($_SESSION)) 
     { 
         session_start(); 
-    }
+	}
+	
 	//función que llama al controlador y su respectiva acción, que son pasados como parámetros
 	function call($controller, $action){
 		//importa el controlador desde la carpeta Controllers
@@ -33,6 +34,13 @@
 		}
 		//llama a la acción del controlador
 		$controller->{$action}();
+		/*
+		if ($action == 'welcome') {
+			$lista= $controller->{'list'}();
+			echo $lista;
+		}
+		*/
+		
 	}
 
 
@@ -62,4 +70,7 @@
 	}else{// le pasa el nombre del controlador y la pagina de error
 		call('usuario', 'error');
 	}
+
+	
+
 ?>
