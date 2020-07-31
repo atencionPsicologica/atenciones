@@ -18,13 +18,15 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Actividad del día</h5>
+        <h5 class="modal-title" id="tituloConsulta"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+		<div id="diagnosticoConsulta" ></div>
+		<div id="enfactualConsulta" ></div>
+		<div id="prescripcionConsulta" ></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
