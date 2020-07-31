@@ -41,9 +41,10 @@
 			</ul>		
 		</div>
 
-		<ul class="navbar-nav mr-auto">
+		<ul class="navbar-nav mr-auto navbar-right ">
 			<?php if (isset($_SESSION['usuario'])){?>
-				<p class="navbar-text">Bienvenido: <?php echo $_SESSION['usuario_alias']; ?></p>
+				
+				<a class="nav-link">Bienvenido: <?php echo $_SESSION['usuario_alias']; ?></a>
 				<li class="nav-item">
 					<a class="nav-link" href="?controller=usuario&action=showregister&id=<?php echo $_SESSION['usuario_id'] ?>">
 						<span class="glyphicon glyphicon-cog"></span>

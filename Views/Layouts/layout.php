@@ -36,6 +36,7 @@
 		require_once('cabecera.php');
 	?>	
 </header>
+<br>
 
 <section>
 	
