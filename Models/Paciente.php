@@ -167,10 +167,10 @@ class Paciente
 	//la función para registrar un paciente
 	public static function save($paciente){
 		$db=Db::getConnect();
-		//var_dump($paciente);
+		var_dump($paciente);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion)');
+		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion, NULL, NULL)');
 		$insert->bindValue('cedula',$paciente->getCedula());
 		$insert->bindValue('nombres',$paciente->getNombres());
 		$insert->bindValue('apellidos',$paciente->getApellidos());

@@ -4,42 +4,45 @@
 
     } ?>
 <h1>Lista de Pacientes</h1>
-	<form class="form-inline" action="?controller=paciente&action=buscar" method="post">
+<form class="form-inline" action="?controller=paciente&action=buscar" method="post">
 	<div class="form-group row">
-	  <div class="col-xs-4">
-	    <input class="form-control" id="cedula" name="cedula" type="text" placeholder="1717899322">
-	  </div>
+		<div class="col-xs-4">
+			<input class="form-control" id="cedula" name="cedula" type="text" placeholder="1717899322">
+		</div>
 	</div>
 	<div class="form-group row">
-	 <div class="col-xs-4">
-	    <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-search"> </span> Buscar</button>
-	  </div>
+		<div class="col-xs-4">
+			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"> </span>
+				Buscar</button>
 		</div>
-	</form>
+	</div>
+</form>
 
-		<?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
-			<div class="alert alert-success">
-				<strong><?php echo $_SESSION['mensaje']; ?></strong>
-			</div>
-		<?php } 
+<?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
+<div class="alert alert-success">
+	<strong><?php echo $_SESSION['mensaje']; ?></strong>
+</div>
+<?php } 
 			unset($_SESSION['mensaje']);
 		?>
 <div class="container">
 	<div class="table-responsive">
 		<table class="table table-hover">
-			<thead>
+			<thead  >
 				<tr>
-					<th>Cédula</th>
-					<th>Nombres</th>
-					<th>Apellidos</th>
-					<th>Ocupación</th>
-					<th>Email</th>
-					<th>Tipo de Sangre</th>
-					<th></th>
+					<th scope="col">Cédula</th>
+					<th scope="col">Nombres</th>
+					<th scope="col">Apellidos</th>
+					<th scope="col">Ocupación</th>
+					<th scope="col">Email</th>
+					<th scope="col">T.Sangre</th>
+					<th scope="col">OpI</th>
+					<th scope="col">OpII</th>
+					<th scope="col">OpIII</th>
 				</tr>
 			</thead>
 			<tbody>
-			<?php
+				<?php
 				foreach ($lista_pacientes as $paciente)  {?>
 
 				<tr>
@@ -49,17 +52,23 @@
 					<td><?php echo $paciente->getOcupacion();?></td>
 					<td><?php echo $paciente->getEmail();?></td>
 					<td><?php echo $paciente->getTposangre();?></td>
-					<td> <button type="button" class="btn btn-primary" onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span class="glyphicon glyphicon-edit"> </span> Actualizar</button></td>
-					<td><button type="button" class="btn btn-danger" onclick="location.href='?controller=paciente&action=delete&id=<?php echo $paciente->getId()?>'"><span class="	glyphicon glyphicon-trash"></span> Eliminar</button></td>
-					<td><button type="button" class="btn btn-success" onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span class="glyphicon glyphicon-th"></span> Crear/Editar H. Clínica</button></td>
+					<td> <button type="button" class="btn btn-primary"
+							onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span
+								class="glyphicon glyphicon-edit"> </span> Actualizar</button></td>
+					<td><button type="button" class="btn btn-danger"
+							onclick="location.href='?controller=paciente&action=delete&id=<?php echo $paciente->getId()?>'"><span
+								class="	glyphicon glyphicon-trash"></span> Eliminar</button></td>
+					<td><button type="button" class="btn btn-success"
+							onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
+								class="glyphicon glyphicon-th"></span> Crear/Editar H. Clínica</button></td>
 				</tr>
 				<?php } ?>
 			</tbody>
 		</table>
-		<ul class ="pagination">		
+		<ul class="pagination">
 			<?php for ($i=1;$i<=$botones;$i++){ ?>
-				<li><a href="?controller=paciente&action=show&boton=<?php echo $i ?>"><?php echo $i; ?></a></li>
-			<?php }?>			
+			<li><a href="?controller=paciente&action=show&boton=<?php echo $i ?>"><?php echo $i; ?></a></li>
+			<?php }?>
 		</ul>
 	</div>
 </div>
