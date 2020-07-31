@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
 
 
 </head>
@@ -58,10 +59,6 @@
 	?>
 </footer>
 
-
-
-
-
-
+<script src="assets/js/calendar.js"></script>
 </body>
 </html>
