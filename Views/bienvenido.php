@@ -15,7 +15,14 @@
 
 <script>
 	$(document).ready(function(){
-		$('#CalendarioWeb').fullCalendar();
+		$('#CalendarioWeb').fullCalendar({
+			header:{
+				left: 'today,prev,next',
+				center: 'title',
+				right: 'month,basicWeek,basicDay,agendaWeek,agendaDay'
+			}
+			
+		});
 	});
 
 

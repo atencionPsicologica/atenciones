@@ -29,6 +29,7 @@
 	<script src="assets/lib/moment.min.js" >
 	</script>
 	<script src="assets/js/fullcalendar.min.js" ></script>
+	<script src="assets/js/es.js" ></script>
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
 
 
