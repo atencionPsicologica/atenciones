@@ -61,7 +61,7 @@ class HistoClinica
 		//var_dump($recomendaciones);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :paciente)');
+		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :paciente, NULL, NULL)');
 		$insert->bindValue('fecha',$histoclinica->getFregistro());
 		$insert->bindValue('numero',$histoclinica->getNumero());
 		$insert->bindValue('paciente',$histoclinica->getPaciente());
@@ -128,7 +128,7 @@ class HistoClinica
 		//var_dump($antPersonal);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abadono, :vicios,:descripcion, :paciente)');
+		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abadono, :vicios,:descripcion, :paciente, null, null)');
 
 		$insert->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
 		$insert->bindValue('embarazos',$antPersonal->getEmbarazos());
@@ -180,7 +180,7 @@ class HistoClinica
 		//ar_dump($paciente);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO antfamiliares VALUES(NULL, :descripcion, :paciente)');
+		$insert=$db->prepare('INSERT INTO antfamiliares VALUES(NULL, :descripcion, :paciente, null, null)');
 		$insert->bindValue('descripcion',$antFamiliar->getDescripcion());
 		$insert->bindValue('paciente',$antFamiliar->getPaciente());
 		$insert->execute();
