@@ -19,6 +19,8 @@ class PacienteController
 	}
 
 	public function save(){
+		
+
 		$paciente= new Paciente(null,$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion']);
 		Paciente::save($paciente);
 		$_SESSION['mensaje']='Registro guardado satisfactoriamente';		
