@@ -18,6 +18,9 @@
 	</div>
 </form>
 
+<br>
+
+
 <?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
 <div class="alert alert-success">
 	<strong><?php echo $_SESSION['mensaje']; ?></strong>

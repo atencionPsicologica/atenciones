@@ -12,6 +12,7 @@
 <div id="exTab1" class="container">
 	<div class="card">
 		<div class="card-header">
+
 			<ul class="nav nav-tabs card-header-tabs">
 				<li class="nav-item">
 					<a class="nav-link active" href="#historia" data-toggle="tab">Historia Clínica</a>
@@ -24,9 +25,11 @@
 				</li>
 
 			</ul>
+
 		</div>
 
 		<div  class="card-body">
+
 			<form action='?controller=historia&action=update' method='post'>
 				<div class="tab-content clearfix">
 					<div class="tab-pane active" id="historia">
@@ -141,6 +144,9 @@
 					</div>
 				</div>
 			</form>
+		</div>
+		<div class="card-footer text-muted">
+			MUJ
 		</div>
 	</div>
 </div>
