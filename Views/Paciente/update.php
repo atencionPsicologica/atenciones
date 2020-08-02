@@ -3,7 +3,7 @@
         session_start(); 
     } ?>
 
-<div class="card">
+<div class="card">  
   <h5 class="card-header">Datos del acompañado</h5>
   <div class="card-body">
     <div class="container">
