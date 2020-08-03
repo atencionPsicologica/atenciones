@@ -4,61 +4,71 @@
     } ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 	<title> Acompañantes</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Librerias Boostrap-->
 
 	<!-- Latest compiled and minified CSS -->
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="assets/css/timeline.css">
+	<link rel="stylesheet" href="assets/css/posiciones.css">
 
 	<!-- Latest compiled JavaScript -->
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<!-- librerias para calendario -->
-	<script src="assets/lib/jquery.min.js"  ></script>
-	<script src="assets/lib/moment.min.js" >
+	<script src="assets/lib/jquery.min.js"></script>
+	<script src="assets/lib/moment.min.js">
 	</script>
-	<script src="assets/js/fullcalendar.min.js" ></script>
-	<script src="assets/js/es.js" ></script>
+	<script src="assets/js/fullcalendar.min.js"></script>
+	<script src="assets/js/es.js"></script>
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+	<script src="assets/js/modernizr.custom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	
 
 
 </head>
-<body>
-<header>
-	<?php 
-		require_once('cabecera.php');
-	?>	
-</header>
-<br>
 
-<section>
-	
-	<div class="container" name="cuerpo">
-		<?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
+<body>
+	<header>
+		<?php 
+		require_once('cabecera.php');
+	?>
+	</header>
+	<br>
+
+	<section>
+
+		<div class="container" name="cuerpo">
+			<?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
 			<div class="alert alert-success">
 				<strong><?php echo $_SESSION['mensaje']; ?></strong>
 			</div>
-		<?php } 
+			<?php } 
 			unset($_SESSION['mensaje']);
 		?>
-		<?php require_once('routing.php'); ?>
-	</div>
-</section>
+			<?php require_once('routing.php'); ?>
+		</div>
+	</section>
 
-<footer>
-	<?php 
+	<footer>
+		<?php 
 		include_once('footer.php');
 	?>
-</footer>
+	</footer>
 
-<script src="assets/js/calendar.js"></script>
+	<script src="assets/js/calendar.js"></script>
+
 </body>
+
 </html>
