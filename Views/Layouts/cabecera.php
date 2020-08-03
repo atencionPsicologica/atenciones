@@ -36,6 +36,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="?controller=usuario&action=welcome">Agenda<span ></span></a>
 				</li>
+				
 			
 		<?php } ?>
 			</ul>		
@@ -50,7 +51,10 @@
 						<span class="glyphicon glyphicon-cog"></span>
 							Mi cuenta
 					</a>
-				</li>					
+				</li>	
+				<li class="nav-item">
+					<input class="nav-link btn btn-dark" id="histo"  type="button"  value="Historial">
+				</li>				
 				<li class="nav-item">
 					<a class="nav-link" href="?controller=usuario&action=logout">
 						<span class="glyphicon glyphicon-log-out"></span>
@@ -75,3 +79,7 @@
 			
 	</div>
 </nav>
+
+
+
+
