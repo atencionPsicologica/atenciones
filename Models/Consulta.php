@@ -8,16 +8,18 @@ class Consulta
 {
 	private $id;
 	private $fecha;
+	private $fechaf;
 	private $enfactual;
 	private $diagnostico;
 	private $prescripcion;
 	private $paciente;
 	private $acompaniante;
 
-	function __construct($id, $fecha, $enfactual, $diagnostico, $prescripcion, $paciente, $acompaniante)
+	function __construct($id, $fecha, $fechaf, $enfactual, $diagnostico, $prescripcion, $paciente, $acompaniante)
 	{
 		$this->setId($id);
 		$this->setFecha($fecha);
+		$this->setFechaf($fechaf);
 		$this->setEnfactual($enfactual);
 		$this->setDiagnostico($diagnostico);
 		$this->setPrescripcion($prescripcion);
@@ -42,6 +44,14 @@ class Consulta
 
 	public function setFecha($fecha){
 		$this->fecha = $fecha;
+	}
+
+	public function getFechaf(){
+		return $this->fechaf;
+	}
+
+	public function setFechaf($fechaf){
+		$this->fechaf = $fechaf;
 	}
 
 	public function getEnfactual(){
@@ -92,8 +102,9 @@ class Consulta
 		//var_dump($consulta);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO consultas VALUES(NULL,:fecha,:enfactual, :diagnostico, :prescripcion, :paciente, :acompaniante)');
+		$insert=$db->prepare('INSERT INTO consultas VALUES(NULL,:fecha, :fechaf, :enfactual, :diagnostico, :prescripcion, :paciente, :acompaniante, NULL, NULL)');
 		$insert->bindValue('fecha',$consulta->getFecha());
+		$insert->bindValue('fechaf', $consulta->getFechaf());
 		$insert->bindValue('enfactual',$consulta->getEnfactual());
 		$insert->bindValue('diagnostico',$consulta->getDiagnostico());
 		$insert->bindValue('prescripcion',$consulta->getPrescripcion());
@@ -112,7 +123,7 @@ class Consulta
 
 		// carga en la $listaConsultas cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $consulta) {
-			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante_id']);
+			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'], $consulta['fin'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante_id']);
 		}
 		return $listaConsultas;
 	}
@@ -125,7 +136,7 @@ class Consulta
 		$sql->execute();
 		// carga en la $listaConsultas cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $consulta) {
-			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante']);
+			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'], $consulta['fin'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante']);
 		}
 		return $listaConsultas;
 	}
@@ -138,7 +149,7 @@ class Consulta
 		$sql->execute();
 		// carga en la $listaConsultas cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $consulta) {
-			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante']);
+			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'],$consulta['fin'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante']);
 		}
 		return $listaConsultas;
 	}
@@ -153,7 +164,7 @@ class Consulta
 		$select->execute();
 		//asignarlo al objeto usuario
 		$consultaDb=$select->fetch();
-		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consultaDb['acompaniante_id']);
+		$consulta= new Consulta($consultaDb['id'],$consultaDb['fecha'],$consultaDb['fin'],$consultaDb['enfactual'],$consultaDb['diagnostico'],$consultaDb['prescripcion'], $consultaDb['paciente'], $consultaDb['acompaniante_id']);
 		//var_dump($usuario);
 		//die();
 		return $consulta;
@@ -197,13 +208,13 @@ class Consulta
 		//var_dump($recomendaciones);
 		//die();
 		//codigo sql
-		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta)');
+		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta, null, null)');
 
 		$insert->bindValue('fecha',$recomendaciones->getFecha());
 		$insert->bindValue('tareas',$recomendaciones->getTareas());
 		$insert->bindValue('indicaciones',$recomendaciones->getIndicaciones());
 		$insert->bindValue('consulta',$recomendaciones->getConsulta());
-
+		
 		$insert->execute();
 		
 	}

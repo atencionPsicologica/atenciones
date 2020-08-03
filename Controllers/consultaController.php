@@ -23,7 +23,8 @@ class ConsultaController
 	}
 
 	public function save(){
-		$consulta= new Consulta(null,$_POST['fecha'],$_POST['enfactual'], $_POST['diagnostico'], $_POST['prescripcion'],$_POST['idpaciente'], $_POST['idacompaniante']);
+		//echo $_POST['fecha'], $_POST['fechaf'],$_POST['enfactual'], $_POST['diagnostico'], $_POST['prescripcion'],$_POST['idpaciente'], $_POST['idacompaniante'];
+		$consulta= new Consulta(null,$_POST['fecha'], $_POST['fechaf'],$_POST['enfactual'], $_POST['diagnostico'], $_POST['prescripcion'],$_POST['idpaciente'], $_POST['idacompaniante']);
 		//var_dump($consulta);
 		//die();
 		Consulta::save($consulta);

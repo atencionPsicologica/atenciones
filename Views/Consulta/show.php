@@ -15,6 +15,7 @@
 	  </div>
 		</div>
 	</form>
+	<br>
 
 		<?php if (isset($_SESSION['mensaje'])) { //mensaje, cuando realiza alguna acción crud ?>
 			<div class="alert alert-success">
@@ -31,6 +32,8 @@
 					<th>Fecha Consulta</th>
 					<th>N. Historia Clínica</th>
 					<th>Paciente</th>
+					<th>OPI</th>
+					<th>OPII</th>
 				</tr>
 			</thead>
 			<tbody>	
