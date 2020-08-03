@@ -61,9 +61,12 @@
 						<div class="container">
 							<div class="form-group">
 								<input type="hidden" name="idconsulta" value="<?php echo $consulta->getId();?>">
-								<label for="fecha">Fecha Consulta:</label>
-								<input type="fecha" class="form-control" id="fecha" name="fecha" required="true"
-									value="<?php echo $consulta->getFecha(); ?>" readonly="false">
+								<label for="fecha">Fecha de Inicio:</label>
+								<input type="text" class="form-control" id="fecha" name="fecha" required="true"
+									value="<?php echo $consulta->getFecha(); ?>" readonly="true" >
+								<label for="fechaf">Fecha Final:</label>
+								<input type="text" class="form-control" id="fechaf" name="fechaf" required="true"
+									value="<?php echo $consulta->getFechaf(); ?>" readonly="true" >
 							</div>
 							<div class="form-group">
 								<label for="enfactual">Enfermedad o problema actual:</label>

@@ -107,7 +107,6 @@
 									class="glyphicon glyphicon-hand-left"></span> Cancelar</button>
 						</div>
 					</div>
-
 				</div>
 			</form>
 		</div>

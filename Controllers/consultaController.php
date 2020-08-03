@@ -98,7 +98,7 @@ class ConsultaController
 	}
 
 	public function update(){
-		$consulta= new Consulta($_POST['idconsulta'],$_POST['fecha'], $_POST['enfactual'], $_POST['diagnostico'], $_POST['prescripcion'], $_POST['idpaciente'], $_POST['idacompaniante']);
+		$consulta= new Consulta($_POST['idconsulta'],$_POST['fecha'], $_POST['fechaf'], $_POST['enfactual'], $_POST['diagnostico'], $_POST['prescripcion'], $_POST['idpaciente'], $_POST['idacompaniante']);
 
 		Consulta::update($consulta);
 		//$this->updateSigVitales();
