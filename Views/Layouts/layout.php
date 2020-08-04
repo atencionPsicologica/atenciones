@@ -18,6 +18,7 @@
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
+	<link rel="stylesheet" href="assets/css/posiciones.css">
 
 
 </head>
@@ -52,109 +53,78 @@
 
 
 
-	<div class="modal fade" id="lineat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade bd-example-modal-lg " id="lineat" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="titulo"></h5>
+					<h5 class="modal-title" id="titulo"> Línea de tiempo de las consultas </h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 
-					<div class="lineatiempo">
-						<div class="timeline">
-							<div class="containe left">
-								<div class="content">
-									<h2>2017</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+
+			
+					<div class="timeline">
+						<div class="containe left">
+							<div class="content">
+								<h2>2017</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
-							<div class="containe right">
-								<div class="content">
-									<h2>2016</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+						</div>
+						<div class="containe right">
+							<div class="content">
+								<h2>2016</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
-							<div class="containe left">
-								<div class="content">
-									<h2>2015</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+						</div>
+						<div class="containe left">
+							<div class="content">
+								<h2>2015</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
-							<div class="containe right">
-								<div class="content">
-									<h2>2012</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+						</div>
+						<div class="containe right">
+							<div class="content">
+								<h2>2012</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
-							<div class="containe left">
-								<div class="content">
-									<h2>2011</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+						</div>
+						<div class="containe left">
+							<div class="content">
+								<h2>2011</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
-							<div class="containe right">
-								<div class="content">
-									<h2>2007</h2>
-									<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-										mnesarchum, vim ea
-										mazim
-										fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim
-										per, habeo iusto primis
-										ea eam.
-									</p>
-								</div>
+						</div>
+						<div class="containe right">
+							<div class="content">
+								<h2>2007</h2>
+								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
+									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
+									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
 
 	<script src="assets/lib/jquery.min.js"></script>
 	<script src="assets/lib/moment.min.js"></script>
