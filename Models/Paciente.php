@@ -18,9 +18,10 @@ class Paciente
 	private $email;
 	private $tposangre;
 	private $direccion;
+	private $acompaniante;
 		
 
-	function __construct($id, $cedula, $nombres, $apellidos, $ocupacion, $estcivil, $genero, $fnacimiento, $email,$tposangre, $direccion)
+	function __construct($id, $cedula, $nombres, $apellidos, $ocupacion, $estcivil, $genero, $fnacimiento, $email,$tposangre, $direccion, $acompaniante)
 	{
 		$this->setId($id);
 		$this->setCedula($cedula);
@@ -33,6 +34,7 @@ class Paciente
 		$this->setEmail($email);
 		$this->setTposangre($tposangre);
 		$this->setDireccion($direccion);
+		$this->setAcompaniante($acompaniante);
 	}
 
 
@@ -161,16 +163,24 @@ class Paciente
 		$this->direccion = $direccion;
 	}
 
+	public function getAcompaniante(){
+		return $this->acompaniante;
+	}
+
+	public function setAcompaniante($acompaniante){
+		$this->acompaniante = $acompaniante;
+	}
+
 
 	//opciones CRUD
 
 	//la función para registrar un paciente
 	public static function save($paciente){
 		$db=Db::getConnect();
-		var_dump($paciente);
+		//var_dump($paciente);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion, NULL, NULL)');
+		$insert=$db->prepare('INSERT INTO pacientes VALUES(NULL,:cedula,:nombres, :apellidos, :ocupacion, :estcivil, :genero, :fnacimiento,:email,:tposangre,:direccion, :acompaniante, :created, :deleted)');
 		$insert->bindValue('cedula',$paciente->getCedula());
 		$insert->bindValue('nombres',$paciente->getNombres());
 		$insert->bindValue('apellidos',$paciente->getApellidos());
@@ -181,6 +191,9 @@ class Paciente
 		$insert->bindValue('email',$paciente->getEmail());
 		$insert->bindValue('tposangre',$paciente->getTposangre());
 		$insert->bindValue('direccion',$paciente->getDireccion());
+		$insert->bindValue('acompaniante',$paciente->getAcompaniante());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 	}
 
@@ -188,13 +201,13 @@ class Paciente
 	public static function all($idUsuario){
 		$listaPacientes =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT * FROM pacientes');
-		//$sql->bindParam(':id',$idUsuario);
+		$sql=$db->prepare('SELECT * FROM pacientes WHERE acompaniante = :id');
+		$sql->bindParam(':id',$idUsuario);
 		$sql->execute();
 
 		// carga en la $listaPacientes cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $paciente) {
-			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion']);
+			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion'], $paciente['acompaniante']);
 		}
 		return $listaPacientes;
 	}
@@ -208,7 +221,7 @@ class Paciente
 		$select->execute();
 		//asignarlo al objeto paciente
 		$pacienteDb=$select->fetch();
-		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion']);
+		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'], $pacienteDb['acompaniante']);
 		return $paciente;
 	}
 

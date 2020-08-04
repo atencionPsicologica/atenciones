@@ -96,7 +96,7 @@
           <label class="control-label col-sm-2" for="fnacimiento">Fecha de nacimiento:</label>
           <div class="col-sm-10">
             <div class="input-group input-append date" id="datePicker">
-              <input type="text" class="form-control " name="date" required="true" autocomplete="off" />
+              <input type="date" class="form-control " name="date" required="true" autocomplete="off" />
               <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
           </div>

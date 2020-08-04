@@ -127,7 +127,7 @@ class Usuario
 	public static function save($acompaniante){
 		$db=Db::getConnect();
 			
-		$insert=$db->prepare('INSERT INTO acompaniante VALUES(NULL,:alias,:nombres,:apellidos,:email,:clave, :respuesta,:pregunta)');
+		$insert=$db->prepare('INSERT INTO acompaniante VALUES(NULL,:alias,:nombres,:apellidos,:email,:clave, :pregunta, :respuesta, :created, :deleted)');
 		$insert->bindValue('alias',$acompaniante->getAlias());
 		$insert->bindValue('nombres',$acompaniante->getNombres());
 		$insert->bindValue('apellidos',$acompaniante->getApellidos());
@@ -139,6 +139,8 @@ class Usuario
 		$insert->bindValue('clave',$pass);
 		$insert->bindValue('pregunta',$acompaniante->getPregunta());
 		$insert->bindValue('respuesta',$acompaniante->getRespuesta());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 	}
 

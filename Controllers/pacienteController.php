@@ -21,7 +21,7 @@ class PacienteController
 	public function save(){
 		
 
-		$paciente= new Paciente(null,$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion']);
+		$paciente= new Paciente(null,$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion'], $_SESSION['usuario_id']);
 		Paciente::save($paciente);
 		$_SESSION['mensaje']='Registro guardado satisfactoriamente';		
 		$this->show();
@@ -80,7 +80,7 @@ class PacienteController
 	}
 
 	public function update(){
-		$paciente= new Paciente($_POST['id'],$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion']);
+		$paciente= new Paciente($_POST['id'],$_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['ocupacion'], $_POST['estcivil'], $_POST['genero'],$_POST['date'],$_POST['email'],$_POST['tposangre'],$_POST['direccion'], $_SESSION['usuario_id']);
 
 		//var_dump($paciente);
 		//die();
