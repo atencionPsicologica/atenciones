@@ -192,7 +192,7 @@ class Usuario
 		$select->bindValue(':id', $id);
 		$select->execute();
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);
-		$lista = json_encode($consultas);
-		return $lista;
+		//$lista = json_encode($consultas);
+		return $consultas;
 	}
 }

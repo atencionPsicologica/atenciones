@@ -12,7 +12,7 @@ require_once('Models/Usuario.php');
 
 $x = new UsuarioController();
 $lista = $x->story();
-
+var_dump($lista);
 
 
 
