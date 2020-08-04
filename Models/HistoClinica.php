@@ -74,7 +74,7 @@ class HistoClinica
 	public static function all(){
 		$listaHistorias =[];
 		$db=Db::getConnect();
-		$sql=$db->query('SELECT * FROM historial order by id');
+		$sql=$db->query('SELECT * FROM historial WHERE historial.deleted_at = 0 order by id');
 
 		// carga en la $listaHistorias cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $historia) {
@@ -84,13 +84,26 @@ class HistoClinica
 	}
 
 	//la función para obtener una HC por el id del recomendaciones
+	public static function allByAcompanainte($id){
+		$listaHistorias =[];
+		$db=Db::getConnect();
+		$sql=$db->prepare('SELECT historial.* FROM historial, pacientes WHERE historial.paciente = pacientes.id AND pacientes.acompaniante = :id AND historial.deleted_at = 0');
+		$sql->bindValue('id', $id);
+		$sql->execute();
+		// carga en la $listaHistorias cada registro desde la base de datos
+		foreach ($sql->fetchAll() as $historia) {
+			$listaHistorias[]= new HistoClinica($historia['id'],$historia['fregistro'], $historia['numero'], $historia['paciente']);
+		}
+		return $listaHistorias;
+	}
+
 	
 
 	//la función para obtener una HC por el numero
 	public static function getByNumero($numero){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM historial WHERE numero=:numero');
+		$select=$db->prepare('SELECT * FROM historial WHERE numero=:numero AND deleted_at = 0 ');
 		$select->bindParam('numero',$numero);
 		$select->execute();
 
@@ -99,12 +112,14 @@ class HistoClinica
 		return $historia;
 	}
 
+
+
 	/***FUNCIONES AUXILIARES HC***/
 	//la función para obtener el valor max del id para el número de historia
 	public static function getMaxId(){
 		//buscar el max id de la tabla historial
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT MAX(id) AS id FROM historial');
+		$select=$db->prepare('SELECT MAX(id) AS id FROM historial WHERE deleted_at = 0 ');
 		$select->execute();
 		//asignarlo al objeto que obtiene el registro
 		$histoDb=$select->fetch();
@@ -115,7 +130,7 @@ class HistoClinica
 	public static function getByPaciente($idPaciente){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM historial WHERE PACIENTE=:id');
+		$select=$db->prepare('SELECT * FROM historial WHERE PACIENTE=:id and deleted_at = 0 ');
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 		$historiaDb=$select->fetch();
@@ -130,7 +145,7 @@ class HistoClinica
 		//var_dump($antPersonal);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abadono, :vicios,:descripcion, :paciente, null, null)');
+		$insert=$db->prepare('INSERT INTO antpersonales VALUES(NULL,:vsexualactiva, :embarazos, :abortos, :abusoPsico, :abusoFis, :abadono, :vicios,:descripcion, :paciente, :created, :deleted)');
 
 		$insert->bindValue('vsexualactiva',$antPersonal->getVsexualactiva());
 		$insert->bindValue('embarazos',$antPersonal->getEmbarazos());
@@ -141,6 +156,8 @@ class HistoClinica
 		$insert->bindValue('vicios',$antPersonal->getVicios());
 		$insert->bindValue('descripcion',$antPersonal->getDescripcion());
 		$insert->bindValue('paciente',$antPersonal->getPaciente());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 	}
 
@@ -149,7 +166,7 @@ class HistoClinica
 		$db=Db::getConnect();
 		//ar_dump($paciente);
 		//die();
-		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id');
+		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id ');
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 
@@ -182,9 +199,11 @@ class HistoClinica
 		//ar_dump($paciente);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO antfamiliares VALUES(NULL, :descripcion, :paciente, null, null)');
+		$insert=$db->prepare('INSERT INTO antfamiliares VALUES(NULL, :descripcion, :paciente, :created, :deleted)');
 		$insert->bindValue('descripcion',$antFamiliar->getDescripcion());
 		$insert->bindValue('paciente',$antFamiliar->getPaciente());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 	}
 
