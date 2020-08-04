@@ -201,7 +201,7 @@ class Paciente
 	public static function all($idUsuario){
 		$listaPacientes =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT * FROM pacientes WHERE acompaniante = :id');
+		$sql=$db->prepare('SELECT * FROM pacientes WHERE acompaniante = :id AND deleted_at = 0');
 		$sql->bindParam(':id',$idUsuario);
 		$sql->execute();
 

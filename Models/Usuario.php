@@ -114,7 +114,7 @@ class Usuario
 	public static function all(){
 		$listaAcompaniante =[];
 		$db=Db::getConnect();
-		$sql=$db->query('SELECT * FROM acompaniante');
+		$sql=$db->query('SELECT * FROM acompaniante WHERE deleted_at = 0');
 
 		// carga en la $listaUsuarios cada registro desde la base de datos
 		foreach ($sql->fetchAll() as $acompaniante) {
@@ -134,8 +134,6 @@ class Usuario
 		$insert->bindValue('email',$acompaniante->getEmail());
 		//encripta la clave
 		$pass=password_hash($acompaniante->getClave(),PASSWORD_DEFAULT);
-		//var_dump($pass);
-		//die();
 		$insert->bindValue('clave',$pass);
 		$insert->bindValue('pregunta',$acompaniante->getPregunta());
 		$insert->bindValue('respuesta',$acompaniante->getRespuesta());
