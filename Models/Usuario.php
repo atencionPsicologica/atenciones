@@ -188,7 +188,7 @@ class Usuario
 	public static function getHistotial($id)
 	{
 		$db= Db::getConnect();
-		$select=$db->prepare('SELECT `id`, `fecha` as start, `fin` as end, `enfactual` as title, `diagnostico`, `prescripcion` FROM `consultas` WHERE acompaniante_id = :id');
+		$select=$db->prepare('SELECT co.id, co.fecha as start, co.fin as end, co.enfactual as title, co.diagnostico, co.prescripcion, pa.nombres as nombre, pa.apellidos as apellido FROM consultas co, pacientes pa WHERE acompaniante_id = 4');
 		$select->bindValue(':id', $id);
 		$select->execute();
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);

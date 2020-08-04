@@ -72,24 +72,31 @@
 				<div class="modal-body">
 					<div class="timeline">
 
-
+						<?php $estado = 0; $titulo = null; ?>
+						<?php foreach ($lista as $list) { ?>
+						<?php if ($estado == 0) { ?>
 						<div class="containe left">
 							<div class="content">
-								<h2>2017</h2>
+								<p> Acompañado: <?php echo $list['nombre']." ".$list['apellido'];?></p>
 								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
 									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
 									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
 						</div>
+						<?php $estado = 1;?>
+						<?php } elseif ($estado == 1) { ?>
 						<div class="containe right">
 							<div class="content">
-								<h2>2016</h2>
+								<p> Acompañado: <?php echo $list['nombre']." ".$list['apellido'];?></p>
 								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
 									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
 									voluptua dignissim per, habeo iusto primis ea eam.</p>
 							</div>
 						</div>
-						
+						<?php $estado = 0;?>
+						<?php } ?>
+						<?php  } ?>
+
 					</div>
 				</div>
 				<div class="modal-footer">
