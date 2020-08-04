@@ -102,7 +102,7 @@ class Consulta
 		//var_dump($consulta);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO consultas VALUES(NULL,:fecha, :fechaf, :enfactual, :diagnostico, :prescripcion, :paciente, :acompaniante, NULL, NULL)');
+		$insert=$db->prepare('INSERT INTO consultas VALUES(NULL,:fecha, :fechaf, :enfactual, :diagnostico, :prescripcion, :paciente, :acompaniante, :created, :deleted)');
 		$insert->bindValue('fecha',$consulta->getFecha());
 		$insert->bindValue('fechaf', $consulta->getFechaf());
 		$insert->bindValue('enfactual',$consulta->getEnfactual());
@@ -110,6 +110,8 @@ class Consulta
 		$insert->bindValue('prescripcion',$consulta->getPrescripcion());
 		$insert->bindValue('paciente',$consulta->getPaciente());
 		$insert->bindValue('acompaniante',$consulta->getAcompaniante());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 		
 	}
@@ -118,7 +120,7 @@ class Consulta
 	public static function all(){
 		$listaConsultas =[];
 		$db=Db::getConnect();
-		$sql=$db->query('SELECT * FROM consultas order by id');
+		$sql=$db->query('SELECT * FROM consultas WHERE deleted_at = 0 order by id');
 
 
 		// carga en la $listaConsultas cada registro desde la base de datos
@@ -131,7 +133,7 @@ class Consulta
 	public static function getByPaciente($paciente){
 		$listaConsultas =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT * FROM consultas WHERE paciente=:paciente order by id');
+		$sql=$db->prepare('SELECT * FROM consultas WHERE paciente=:paciente and deleted_at = 0 order by id');
 		$sql->bindValue('paciente',$paciente);
 		$sql->execute();
 		// carga en la $listaConsultas cada registro desde la base de datos
@@ -144,7 +146,7 @@ class Consulta
 	public static function getByAcompaniante($acompaniante){
 		$listaConsultas =[];
 		$db=Db::getConnect();
-		$sql=$db->prepare('SELECT * FROM consultas WHERE acompaniante=:acompaniante order by id');
+		$sql=$db->prepare('SELECT * FROM consultas WHERE acompaniante=:acompaniante and deleted_at = 0 order by id');
 		$sql->bindValue('acompaniante',$acompaniante);
 		$sql->execute();
 		// carga en la $listaConsultas cada registro desde la base de datos
@@ -159,7 +161,7 @@ class Consulta
 	public static function getById($id){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM consultas WHERE ID=:id');
+		$select=$db->prepare('SELECT * FROM consultas WHERE ID=:id and deleted_at = 0');
 		$select->bindValue('id',$id);
 		$select->execute();
 		//asignarlo al objeto usuario
@@ -208,13 +210,14 @@ class Consulta
 		//var_dump($recomendaciones);
 		//die();
 		//codigo sql
-		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta, null, null)');
+		$insert=$db->prepare('INSERT INTO recomendaciones VALUES(NULL,:fecha,:tareas,:indicaciones,:consulta, :created, :deleted)');
 
 		$insert->bindValue('fecha',$recomendaciones->getFecha());
 		$insert->bindValue('tareas',$recomendaciones->getTareas());
 		$insert->bindValue('indicaciones',$recomendaciones->getIndicaciones());
 		$insert->bindValue('consulta',$recomendaciones->getConsulta());
-		
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 		
 	}
@@ -235,7 +238,7 @@ class Consulta
 		//buscar
 		$db=Db::getConnect();
 
-		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas_id =:consulta AND fecha=:fecha');
+		$select=$db->prepare('SELECT * FROM recomendaciones WHERE consultas_id =:consulta AND fecha=:fecha and deleted_at = 0');
 
 		$select->bindValue('consulta',$consultas);
 		$select->bindValue('fecha',$fechaConsulta);

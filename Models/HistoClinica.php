@@ -61,10 +61,12 @@ class HistoClinica
 		//var_dump($recomendaciones);
 		//die();
 			
-		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :paciente, NULL, NULL)');
+		$insert=$db->prepare('INSERT INTO historial VALUES(NULL,:fecha,:numero, :paciente, :created, :deleted)');
 		$insert->bindValue('fecha',$histoclinica->getFregistro());
 		$insert->bindValue('numero',$histoclinica->getNumero());
 		$insert->bindValue('paciente',$histoclinica->getPaciente());
+		$insert->bindValue('created', date("Y-m-d H:i:s"));
+		$insert->bindValue('deleted', 0);
 		$insert->execute();
 	}
 
