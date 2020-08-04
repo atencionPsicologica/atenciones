@@ -5,7 +5,7 @@
         session_start(); 
 	}	
 
-	
+	require_once('historial.php');
 		
 ?>
 <!DOCTYPE html>
