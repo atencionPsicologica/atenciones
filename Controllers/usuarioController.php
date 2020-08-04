@@ -91,7 +91,7 @@ class UsuarioController
 
 	public function story()
 	{
-		$lista = Usuario::getHistotial($_SESSION['usuario_id']);
+		$lista = Usuario::getHistotial($_SESSION['usuario_id']??null);
 		return $lista;	
 	}
 

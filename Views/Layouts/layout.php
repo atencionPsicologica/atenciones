@@ -77,20 +77,20 @@
 						<?php if ($estado == 0) { ?>
 						<div class="containe left">
 							<div class="content">
-								<p> Acompañado: <?php echo $list['nombre']." ".$list['apellido'];?></p>
-								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-									voluptua dignissim per, habeo iusto primis ea eam.</p>
+								<p>Hora de inicio: <?php echo $list['start'];?></p>
+								<p>Hora de fin: <?php echo $list['end'];?> </p>
+								<p>Acompañado: <?php echo $list['nombre']." ".$list['apellido'];?></p>
+								<p>Caso: <?php echo $list['title'];?> </p>
 							</div>
 						</div>
 						<?php $estado = 1;?>
 						<?php } elseif ($estado == 1) { ?>
 						<div class="containe right">
 							<div class="content">
-								<p> Acompañado: <?php echo $list['nombre']." ".$list['apellido'];?></p>
-								<p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-									mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-									voluptua dignissim per, habeo iusto primis ea eam.</p>
+								<p>Hora de inicio: <?php echo $list['start'];?></p>
+								<p>Hora de fin: <?php echo $list['end'];?> </p>
+								<p> Acompañado:<?php echo $list['nombre']." ".$list['apellido'];?></p>
+								<p>Caso:<?php echo $list['title'];?></p>
 							</div>
 						</div>
 						<?php $estado = 0;?>
