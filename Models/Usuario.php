@@ -183,6 +183,16 @@ class Usuario
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);
 		$lista = json_encode($consultas);
 		return $lista;
+	}
 
+	public static function getHistotial($id)
+	{
+		$db= Db::getConnect();
+		$select=$db->prepare('SELECT `id`, `fecha` as start, `fin` as end, `enfactual` as title, `diagnostico`, `prescripcion` FROM `consultas` WHERE acompaniante_id = :id');
+		$select->bindValue(':id', $id);
+		$select->execute();
+		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);
+		$lista = json_encode($consultas);
+		return $lista;
 	}
 }

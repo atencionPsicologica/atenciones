@@ -11,8 +11,8 @@ require_once('Controllers/usuarioController.php');
 require_once('Models/Usuario.php');
 
 $x = new UsuarioController();
-$lista = $x->list();
-echo $lista;
+$lista = $x->story();
+
 
 
 

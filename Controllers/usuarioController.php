@@ -89,6 +89,12 @@ class UsuarioController
 		return $lista;
 	}
 
+	public function story()
+	{
+		$lista = Usuario::getHistotial($_SESSION['usuario_id']);	
+		echo $lista;
+	}
+
 
 	public function showLogin(){
 		require_once('Views/User/login.php');

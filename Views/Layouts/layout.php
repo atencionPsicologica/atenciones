@@ -1,7 +1,13 @@
-<?php if(!isset($_SESSION)) 
+<?php 
+
+	if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } ?>
+	}	
+
+	
+		
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -65,6 +71,8 @@
 				</div>
 				<div class="modal-body">
 					<div class="timeline">
+
+
 						<div class="containe left">
 							<div class="content">
 								<h2>2017</h2>
