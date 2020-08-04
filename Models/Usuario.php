@@ -159,6 +159,13 @@ class Usuario
 		$delete->execute();
 	}
 
+	public static function down ($id){
+		$db=Db::getConnect();
+		$delete=$db->prepare('UPDATE acompaniante SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+	}
+
 	//la función para obtener un usuario por el id
 	public static function getById($id){
 		//buscar

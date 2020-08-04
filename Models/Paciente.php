@@ -281,10 +281,48 @@ class Paciente
 		$delete->bindValue('id',$id);
 		$delete->execute();
 
+		//eliminar registros historial
+		$delete=$db->prepare('DELETE FROM historial WHERE paciente=:id ');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
 		//eliminar el paciente
 		$delete=$db->prepare('DELETE FROM pacientes WHERE ID=:id ');
 		$delete->bindValue('id',$id);
 		$delete->execute();
+	}
+
+	public static function down ($id){
+		$db=Db::getConnect();
+
+		// elimina en cascada
+
+		//eliminar registros antfamiliares
+		$delete=$db->prepare('UPDATE antfamiliares SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		//eliminar registros antpersonales
+		$delete=$db->prepare('UPDATE antpersonales SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		//eliminar registros consultas
+		$delete=$db->prepare('UPDATE consultas SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		//eliminar el historial
+		$delete=$db->prepare('UPDATE historial SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		//eliminar el paciente
+		$delete=$db->prepare('UPDATE pacientes SET deleted_at = 1 WHERE id = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		
 	}
 
 }
