@@ -3,15 +3,16 @@
         session_start(); 
     }?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container-fluid">
+	<!--div class="container-fluid">
 		<div class="">			
-			<a class="navbar-brand " href="#">
-			<span class="glyphicon glyphicon-cloud" aria-hidden="true" ></span>
+			<a class="navbar-brand" href="#">
+			<span  aria-hidden="true" ></span>
 			Misioneros
 			</a>
-		</div>
-		<div class="collapse navbar-collapse" >
-		<ul class="navbar-nav mr-auto">
+			class="collapse navbar-collapse"
+		</div-->
+		<div class="collapse show navbar-collapse">
+		<ul class="navbar-nav mr-auto ">
 		<?php if (isset($_SESSION['usuario'])){ ?>		
 				
 				<li class="nav-item dropdown">
@@ -42,6 +43,7 @@
 			</ul>		
 		</div>
 
+		
 		<ul class="navbar-nav mr-auto navbar-right ">
 			<?php if (isset($_SESSION['usuario'])){?>
 				
@@ -53,7 +55,7 @@
 					</a>
 				</li>	
 				<li class="nav-item">
-					<input class="nav-link btn btn-dark" id="histo"  type="button"  value="Historial">
+					<input class="nav-link btn btn-dark  btn-sm" id="histo"  type="button"  value="Historial" >
 				</li>				
 				<li class="nav-item">
 					<a class="nav-link" href="?controller=usuario&action=logout">

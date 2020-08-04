@@ -20,14 +20,6 @@
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
 
 
-
-
-
-
-
-
-
-
 </head>
 
 <body>
