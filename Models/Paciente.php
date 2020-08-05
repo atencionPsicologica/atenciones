@@ -216,7 +216,7 @@ class Paciente
 	public static function getById($id){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM pacientes WHERE ID=:id');
+		$select=$db->prepare('SELECT * FROM pacientes WHERE ID=:id AND deleted_at = 0 ');
 		$select->bindValue('id',$id);
 		$select->execute();
 		//asignarlo al objeto paciente
@@ -229,12 +229,12 @@ class Paciente
 	public static function getByCedula($cedula){
 		//buscar
 		$db=Db::getConnect();
-		$select=$db->prepare('SELECT * FROM pacientes WHERE cedula=:cedula');
+		$select=$db->prepare("SELECT * FROM pacientes WHERE cedula = :cedula AND deleted_at = 0");
 		$select->bindValue('cedula',$cedula);
 		$select->execute();
 		//asignarlo al objeto paciente
 		$pacienteDb=$select->fetch();
-		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'],$pacienteDb['usuario']);
+		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'],$pacienteDb['acompaniante']);
 		return $paciente;
 	}
 
