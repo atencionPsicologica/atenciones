@@ -166,7 +166,7 @@ class HistoClinica
 		$db=Db::getConnect();
 		//ar_dump($paciente);
 		//die();
-		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id ');
+		$select=$db->prepare('SELECT * FROM antpersonales WHERE PACIENTE=:id and deleted_at = 0');
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 
@@ -211,7 +211,7 @@ class HistoClinica
 		$db=Db::getConnect();
 		//ar_dump($paciente);
 		//die();
-		$select=$db->prepare('SELECT * FROM antfamiliares WHERE paciente=:id');
+		$select=$db->prepare('SELECT * FROM antfamiliares WHERE paciente=:id and deleted_at = 0');
 		$select->bindParam('id',$idPaciente);
 		$select->execute();
 
