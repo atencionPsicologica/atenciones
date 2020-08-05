@@ -195,11 +195,10 @@ class Usuario
 	public static function getHistotial($id)
 	{
 		$db= Db::getConnect();
-		$select=$db->prepare('SELECT co.id, co.fecha as start, co.fin as end, co.enfactual as title, co.diagnostico, co.prescripcion, pa.nombres as nombre, pa.apellidos as apellido FROM consultas co, pacientes pa WHERE acompaniante_id = :id ORDER BY co.fecha DESC');
+		$select=$db->prepare('SELECT co.id, co.fecha as start, co.fin as end, co.enfactual as title, co.diagnostico, co.prescripcion, pa.nombres as nombre, pa.apellidos as apellido FROM consultas co, pacientes pa WHERE acompaniante_id = :id and co.deleted_at = 1  ORDER BY co.fecha DESC');
 		$select->bindValue(':id', $id);
 		$select->execute();
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);
-		//$lista = json_encode($consultas);
 		return $consultas;
 	}
 }
