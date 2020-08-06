@@ -41,30 +41,51 @@
 					<th scope="col">T.Sangre</th>
 					<th scope="col">OpI</th>
 					<th scope="col">OpII</th>
+				<?php if($_SESSION['usuario_id'] == 1) {  ?>
 					<th scope="col">OpIII</th>
+				<?php } ?>
 				</tr>
 			</thead>
 			<tbody>
-				<?php
-				foreach ($lista_pacientes as $paciente)  {?>
+			
+				<?php foreach ($lista_pacientes as $paciente)  {?>
+					<?php if($_SESSION['usuario_id'] == 1) { ?>
+					<tr>
+						<td><?php echo $paciente->getCedula(); ?></td>
+						<td><?php echo $paciente->getNombres(); ?></td>
+						<td><?php echo $paciente->getApellidos();?></td>
+						<td><?php echo $paciente->getOcupacion();?></td>
+						<td><?php echo $paciente->getEmail();?></td>
+						<td><?php echo $paciente->getTposangre();?></td>
+						<td> <button type="button" class="btn btn-primary"
+								onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span class="oi oi-pencil"></span> Actualizar</button></td>
+						<td><button type="button" class="btn btn-danger"
+								onclick="location.href='?controller=paciente&action=delete&id=<?php echo $paciente->getId()?>'"><span
+									class=""></span> Eliminar</button></td>
+						<td><button type="button" class="btn btn-success"
+								onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
+									class=""></span> Crear/Editar H. Clínica</button></td>
+					</tr>
+	
+			<?php } else { ?>
 
 				<tr>
-					<td><?php echo $paciente->getCedula(); ?></td>
-					<td><?php echo $paciente->getNombres(); ?></td>
-					<td><?php echo $paciente->getApellidos();?></td>
-					<td><?php echo $paciente->getOcupacion();?></td>
-					<td><?php echo $paciente->getEmail();?></td>
-					<td><?php echo $paciente->getTposangre();?></td>
-					<td> <button type="button" class="btn btn-primary"
-							onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span class="oi oi-pencil"></span> Actualizar</button></td>
-					<td><button type="button" class="btn btn-danger"
-							onclick="location.href='?controller=paciente&action=delete&id=<?php echo $paciente->getId()?>'"><span
-								class=""></span> Eliminar</button></td>
-					<td><button type="button" class="btn btn-success"
-							onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
-								class=""></span> Crear/Editar H. Clínica</button></td>
+						<td><?php echo $paciente->getCedula(); ?></td>
+						<td><?php echo $paciente->getNombres(); ?></td>
+						<td><?php echo $paciente->getApellidos();?></td>
+						<td><?php echo $paciente->getOcupacion();?></td>
+						<td><?php echo $paciente->getEmail();?></td>
+						<td><?php echo $paciente->getTposangre();?></td>
+						<td> <button type="button" class="btn btn-primary"
+								onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span class="oi oi-pencil"></span> Actualizar</button></td>
+						
+						<td><button type="button" class="btn btn-success"
+								onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
+									class=""></span> Crear/Editar H. Clínica</button></td>
 				</tr>
-				<?php } ?>
+
+			<?php } ?>
+		<?php } ?>
 			</tbody>
 		</table>
 		<ul class="pagination">
