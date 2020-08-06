@@ -56,14 +56,13 @@
 					<td><?php echo $paciente->getEmail();?></td>
 					<td><?php echo $paciente->getTposangre();?></td>
 					<td> <button type="button" class="btn btn-primary"
-							onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span
-								class="glyphicon glyphicon-edit"> </span> Actualizar</button></td>
+							onclick="location.href='?controller=paciente&action=showupdate&id=<?php echo $paciente->getId()?>'"><span class="oi oi-pencil"></span> Actualizar</button></td>
 					<td><button type="button" class="btn btn-danger"
 							onclick="location.href='?controller=paciente&action=delete&id=<?php echo $paciente->getId()?>'"><span
-								class="	glyphicon glyphicon-trash"></span> Eliminar</button></td>
+								class=""></span> Eliminar</button></td>
 					<td><button type="button" class="btn btn-success"
 							onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
-								class="glyphicon glyphicon-th"></span> Crear/Editar H. Clínica</button></td>
+								class=""></span> Crear/Editar H. Clínica</button></td>
 				</tr>
 				<?php } ?>
 			</tbody>
