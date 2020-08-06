@@ -85,7 +85,7 @@ class UsuarioController
 	} 
 	public function list()
 	{
-		$lista = Usuario::getConsultas($_SESSION['usuario_id']);	
+		$lista = Usuario::getConsultas($_SESSION['usuario_id']??null);	
 		return $lista;
 	}
 
@@ -112,6 +112,8 @@ class UsuarioController
 				$existe=True;
 				$_SESSION['usuario_id']=$usuario->getId();
 				$_SESSION['usuario_alias']=$usuario->getAlias();
+				$_SESSION['usuario_nombre']=$usuario->getNombres();
+				 
 			}
 		}
 		if ($existe) {
@@ -128,13 +130,15 @@ class UsuarioController
 		unset($_SESSION['usuario']);
 		unset($_SESSION['usuario_id']);
 		unset($_SESSION['usuario_name']);
+		unset($_SESSION['usuario_nombre']);
 		header('Location: index.php');
 	}
 
-	public function validarCedula(){
+	/*
+	//public function validarCedula(){
 		// fuerzo parametro de entrada a string
-		$retorno="";
-        $numero = $_POST['cedula'];
+		//$retorno="";
+        //$numero = $_POST['cedula'];
         //var_dump($numero);
         //die();
         // borro por si acaso errores de llamadas anteriores.
@@ -144,12 +148,12 @@ class UsuarioController
             //$this->validarInicial($numero, '10');
            // $this->validarCodigoProvincia(substr($numero, 0, 2));
             //$this->validarTercerDigito($numero[2], 'cedula');
-            $this->algoritmoModulo10(substr($numero, 0, 9), $numero[9]);
-            $retorno='SI';
+            //$this->algoritmoModulo10(substr($numero, 0, 9), $numero[9]);
+            //$retorno='SI';
         
         //$datos = array('estado' => 'ok','nombre' => $nombre, 'apellido' => $apellido, 'edad' => $edad);
         //echo  json_encode($datos, true);
-	}
+	//}
 
 	public function algoritmoModulo10($digitosIniciales, $digitoVerificador)
     {
@@ -177,7 +181,8 @@ class UsuarioController
             //throw new Exception('Dígitos iniciales no validan contra Dígito Idenficador');
         }
         return true;
-    }
+	}
+	*/
 
     public function setError($newError)
     {

@@ -3,19 +3,23 @@
 		<p>Bienvenido acompañante</p>
 	</div-->
 
-  
-    <div id="container">
-      <div class="row">
-        <div class="col"></div>
-        <div class="col-7">
-          <div id="CalendarioWeb"></div>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
-  
-</div>
 
+  <?php 
+    if ($_SESSION['usuario_nombre'] != "admin") {
+      # code...
+?>
+
+  <div id="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-7">
+        <div id="CalendarioWeb"></div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+</div>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -41,5 +45,4 @@
   </div>
 </div>
 
-
-
+<?php  }  ?>
