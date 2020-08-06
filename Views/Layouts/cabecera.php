@@ -45,7 +45,7 @@
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Acompañantes <span class="caret"></span></a>
 						<ul class="dropdown-menu"  >						
 							<li><a class="dropdown-item"  href="?controller=usuario&action=register">Registrar</a></li>
-							<li><a class="dropdown-item"  href="?controller=paciente&action=show">Ver Acompañantes</a></li>
+							<li><a class="dropdown-item"  href="?controller=usuario&action=show">Ver Acompañantes</a></li>
 						</ul>
 					</li>
 

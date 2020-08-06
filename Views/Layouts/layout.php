@@ -4,9 +4,7 @@
     { 
         session_start(); 
 	}	
-
 	require_once('historial.php');
-		
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,7 +12,7 @@
 <head>
 
 	<title> Acompañantes</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Librerias Boostrap-->
 

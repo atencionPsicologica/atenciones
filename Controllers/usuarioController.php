@@ -16,7 +16,40 @@ class UsuarioController
 	public function show(){
 		//echo 'index desde UsuarioController';
 			
-		$usuario=Usuario::getById($_GET['id']);
+		//$usuario=Usuario::getById($_GET['id']);
+		$usuario=Usuario::all();
+
+
+		//paginator
+		$lista_usuarios="";
+		$registros=8; // debe ser siempre par
+		if (count($usuario)>$registros) { // solo página si el número de registros mostrados es menor que los registros de la bd
+			if ((count($usuario)%$registros)==0) {
+				$botones=count($usuario)/$registros;
+			}else{//si el total de registros de la bd es impar			
+				$botones=(count($usuario)/$registros)+1;
+			}
+			
+			if (!isset($_GET['boton'])) {//la primera vez carga los registros del botón 1
+				$res=$registros*1;
+				for ($i=0; $i < $res ; $i++) { 
+					$lista_usuarios[]=$usuario[$i];
+				}
+			}else{
+				//multiplica el número de botón por el número de registros mostrados
+				$res=$registros*$_GET['boton'];
+				//resta el valor mayor de registros a mostrar menos el número de registros mostrados
+				for ($i=$res-$registros; $i < $res; $i++) { 
+					if ($i<count($usuario)) {
+						$lista_usuarios[]=$usuario[$i];
+					}				
+				}
+			}
+		}else{// si no se presenta el paginador
+			$botones=0;
+			$lista_usuarios=$usuario;
+		}
+
 		require_once('Views/User/show.php');
 	}
 	public function register(){
