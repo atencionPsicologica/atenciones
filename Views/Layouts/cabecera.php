@@ -14,31 +14,30 @@
 		<div class="collapse show navbar-collapse">
 		<ul class="navbar-nav mr-auto ">
 		<?php if (isset($_SESSION['usuario'])){ ?>		
-				
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pacientes <span class="caret"></span></a>
-					<ul class="dropdown-menu"  >						
-						<li><a class="dropdown-item"  href="?controller=paciente&action=register">Registrar</a></li>
-						<li><a class="dropdown-item"  href="?controller=paciente&action=show">Ver Pacientes</a></li>
-					</ul>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Consultas<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="?controller=historia&action=show">Nueva Consulta</a></li>
-					</ul>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Revisiones<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item"  href="?controller=consulta&action=show">Ver consultas</a></li>
-					</ul>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="?controller=usuario&action=welcome">Agenda<span ></span></a>
-				</li>
-				
-			
+			<?php if ($_SESSION['usuario_nombre'] != "admin") { ?>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pacientes <span class="caret"></span></a>
+						<ul class="dropdown-menu"  >						
+							<li><a class="dropdown-item"  href="?controller=paciente&action=register">Registrar</a></li>
+							<li><a class="dropdown-item"  href="?controller=paciente&action=show">Ver Pacientes</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Consultas<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="?controller=historia&action=show">Nueva Consulta</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Revisiones<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item"  href="?controller=consulta&action=show">Ver consultas</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="?controller=usuario&action=welcome">Agenda<span ></span></a>
+					</li>
+			<?php } ?>
 		<?php } ?>
 			</ul>		
 		</div>
@@ -46,23 +45,24 @@
 		
 		<ul class="navbar-nav mr-auto navbar-right ">
 			<?php if (isset($_SESSION['usuario'])){?>
-				
-				<a class="nav-link">Bienvenido: <?php echo $_SESSION['usuario_alias']; ?></a>
-				<li class="nav-item">
-					<a class="nav-link" href="?controller=usuario&action=showregister&id=<?php echo $_SESSION['usuario_id'] ?>">
-						<span class="glyphicon glyphicon-cog"></span>
-							Mi cuenta
-					</a>
-				</li>	
-				<li class="nav-item">
-					<input class="nav-link btn btn-dark  btn-sm" id="histo"  type="button"  value="Historial" >
-				</li>				
-				<li class="nav-item">
-					<a class="nav-link" href="?controller=usuario&action=logout">
-						<span class="glyphicon glyphicon-log-out"></span>
-						Salir
-					</a>
-				</li>
+				<?php if ($_SESSION['usuario_nombre'] != "admin") { ?>
+					<a class="nav-link">Bienvenido: <?php echo $_SESSION['usuario_alias']; ?></a>
+					<li class="nav-item">
+						<a class="nav-link" href="?controller=usuario&action=showregister&id=<?php echo $_SESSION['usuario_id'] ?>">
+							<span class="glyphicon glyphicon-cog"></span>
+								Mi cuenta
+						</a>
+					</li>	
+					<li class="nav-item">
+						<input class="nav-link btn btn-dark  btn-sm" id="histo"  type="button"  value="Historial" >
+					</li>				
+					<li class="nav-item">
+						<a class="nav-link" href="?controller=usuario&action=logout">
+							<span class="glyphicon glyphicon-log-out"></span>
+							Salir
+						</a>
+					</li>
+				<?php } ?>
 			<?php } else{ ?>
 					<li class="nav-item" >
 						<a class="nav-link"  href="?controller=usuario&action=register">
