@@ -3,7 +3,6 @@
 if(!isset($_SESSION)) 
 { 	//busca los datos de la session
     session_start(); 
-    //echo "<p>Bienvenido<p/>". $_SESSION['nombre'];
 }
 
 require_once('connection.php');
