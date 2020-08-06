@@ -212,6 +212,20 @@ class Paciente
 		return $listaPacientes;
 	}
 
+	public static function allMUJ(){
+		$listaPacientes =[];
+		$db=Db::getConnect();
+		$sql=$db->prepare('SELECT * FROM pacientes WHERE  deleted_at = 0');
+		$sql->execute();
+
+		// carga en la $listaPacientes cada registro desde la base de datos
+		foreach ($sql->fetchAll() as $paciente) {
+			$listaPacientes[]= new Paciente($paciente['id'],$paciente['cedula'], $paciente['nombres'],$paciente['apellidos'],$paciente['ocupacion'], $paciente['estcivil'], $paciente['genero'], $paciente['fnacimiento'], $paciente['email'],$paciente['tposangre'], $paciente['direccion'], $paciente['acompaniante']);
+		}
+		
+		return $listaPacientes;
+	}
+
 	//la función para obtener un paciente por el id
 	public static function getById($id){
 		//buscar

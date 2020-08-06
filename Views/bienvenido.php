@@ -4,10 +4,7 @@
 	</div-->
 
 
-  <?php 
-    if ($_SESSION['usuario_nombre'] != "admin") {
-      # code...
-?>
+  <?php if ($_SESSION['usuario_nombre'] != "MUJ") {?>
 
   <div id="container">
     <div class="row">
@@ -45,4 +42,17 @@
   </div>
 </div>
 
-<?php  }  ?>
+<?php  } else { ?>
+
+
+
+  
+
+
+
+
+
+
+
+
+<?php }  ?>

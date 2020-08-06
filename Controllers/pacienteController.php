@@ -33,11 +33,20 @@ class PacienteController
 		//var_dump($_SESSION['usuario_id']);
 		//die();
 		//modificar de tal forma que muestre las consultas del dia de cada usuario por paciente.
-		$pacientes=Paciente::all($_SESSION['usuario_id']);
+		if ($_SESSION['usuario_id'] != 1) 
+		{
+			$pacientes=Paciente::all($_SESSION['usuario_id']);
+		}
+		else
+		{
+			$pacientes=Paciente::allMUJ();
+		}
+		
+		//$pacientes=Paciente::allMUJ();
 		
 		//paginator
 		$lista_pacientes="";
-		$registros=4; // debe ser siempre par
+		$registros=8; // debe ser siempre par
 		if (count($pacientes)>$registros) { // solo página si el número de registros mostrados es menor que los registros de la bd
 			if ((count($pacientes)%$registros)==0) {
 				$botones=count($pacientes)/$registros;
