@@ -234,7 +234,7 @@ class Paciente
 		$select->execute();
 		//asignarlo al objeto paciente
 		$pacienteDb=$select->fetch();
-		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'],$pacienteDb['acompaniante']);
+		$paciente= new Paciente($pacienteDb['id']??null,$pacienteDb['cedula']??null,$pacienteDb['nombres']??null,$pacienteDb['apellidos']??null,$pacienteDb['ocupacion']??null,$pacienteDb['estcivil']??null, $pacienteDb['genero']??null,$pacienteDb['fnacimiento']??null,$pacienteDb['email']??null,$pacienteDb['tposangre']??null, $pacienteDb['direccion']??null,$pacienteDb['acompaniante']??null);
 		return $paciente;
 	}
 

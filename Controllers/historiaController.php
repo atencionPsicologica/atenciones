@@ -72,7 +72,7 @@ class HistoriaController
 		//$paciente=Paciente::getById($_SESSION['usuario_id']);
 		//paginator
 		$lista_historias="";
-		$registros=2; // debe ser siempre par
+		$registros=4; // debe ser siempre par
 		if (count($historias)>$registros) { // solo página si el número de registros mostrados es menor que los registros de la bd
 			if ((count($historias)%$registros)==0) {
 				$botones=count($historias)/$registros;

@@ -41,7 +41,9 @@ class ConsultaController
 	//muestra las consultas
 	public function show(){
 
-		$consultas=Consulta::all();
+
+		//$consultas=Consulta::all();
+		$consultas=Consulta::allByAcompaniante($_SESSION['usuario_id']);
 		$lista_consultas="";
 		$registros=2; // debe ser siempre par
 		if (count($consultas)>$registros) { // solo página si el número de registros mostrados es menor que los registros de la bd

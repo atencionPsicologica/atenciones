@@ -129,6 +129,20 @@ class Consulta
 		}
 		return $listaConsultas;
 	}
+
+	public static function allByAcompaniante($id){
+		$listaConsultas =[];
+		$db=Db::getConnect();
+		$sql=$db->prepare('SELECT * FROM consultas WHERE deleted_at = 0 and consultas.acompaniante_id = :acompaniante order by id');
+		$sql->bindValue('acompaniante', $id);
+		$sql->execute();
+
+		// carga en la $listaConsultas cada registro desde la base de datos
+		foreach ($sql->fetchAll() as $consulta) {
+			$listaConsultas[]= new Consulta($consulta['id'],$consulta['fecha'], $consulta['fin'],$consulta['enfactual'], $consulta['diagnostico'],$consulta['prescripcion'],$consulta['paciente'], $consulta['acompaniante_id']);
+		}
+		return $listaConsultas;
+	}
 	//función para obtener todas las consultas por numero de cedula pacientes
 	public static function getByPaciente($paciente){
 		$listaConsultas =[];
