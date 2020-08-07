@@ -184,7 +184,7 @@ class Usuario
 	public static function getConsultas($id)
 	{
 		$db= Db::getConnect();
-		$select=$db->prepare('SELECT `id`, `fecha` as start, `fin` as end, `enfactual` as title, `diagnostico`, `prescripcion` FROM `consultas` WHERE acompaniante_id = :id');
+		$select=$db->prepare('SELECT `id`, `fecha` as start, `fin` as end, `enfactual` as title, `diagnostico`, `prescripcion` FROM `consultas` WHERE acompaniante_id = :id and deleted_at = 0');
 		$select->bindValue(':id', $id);
 		$select->execute();
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -195,7 +195,7 @@ class Usuario
 	public static function getHistotial($id)
 	{
 		$db= Db::getConnect();
-		$select=$db->prepare('SELECT co.id, co.fecha as start, co.fin as end, co.enfactual as title, co.diagnostico, co.prescripcion, pa.nombres as nombre, pa.apellidos as apellido FROM consultas co, pacientes pa WHERE acompaniante_id = :id and co.deleted_at = 1  ORDER BY co.fecha DESC');
+		$select=$db->prepare('SELECT co.id, co.fecha as start, co.fin as end, co.enfactual as title, co.diagnostico, co.prescripcion, pacientes.nombres as nombre, pacientes.apellidos as apellido FROM consultas co INNER JOIN pacientes ON co.paciente = pacientes.id WHERE co.acompaniante_id = :id and co.deleted_at = 1 ORDER BY co.fecha DESC');
 		$select->bindValue(':id', $id);
 		$select->execute();
 		$consultas = $select->fetchAll(PDO::FETCH_ASSOC);

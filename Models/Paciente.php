@@ -235,7 +235,7 @@ class Paciente
 		$select->execute();
 		//asignarlo al objeto paciente
 		$pacienteDb=$select->fetch();
-		$paciente= new Paciente($pacienteDb['id'],$pacienteDb['cedula'],$pacienteDb['nombres'],$pacienteDb['apellidos'],$pacienteDb['ocupacion'],$pacienteDb['estcivil'], $pacienteDb['genero'],$pacienteDb['fnacimiento'],$pacienteDb['email'],$pacienteDb['tposangre'], $pacienteDb['direccion'], $pacienteDb['acompaniante']);
+		$paciente= new Paciente($pacienteDb['id']??null,$pacienteDb['cedula']??null,$pacienteDb['nombres']??null,$pacienteDb['apellidos']??null,$pacienteDb['ocupacion']??null,$pacienteDb['estcivil']??null, $pacienteDb['genero']??null,$pacienteDb['fnacimiento']??null,$pacienteDb['email']??null,$pacienteDb['tposangre']??null, $pacienteDb['direccion']??null, $pacienteDb['acompaniante']??null);
 		return $paciente;
 	}
 
@@ -314,22 +314,22 @@ class Paciente
 		
 		
 		//eliminar registros antfamiliares
-		$delete=$db->prepare('UPDATE antfamiliares SET deleted_at = 1 WHERE id = :id');
+		$delete=$db->prepare('UPDATE antfamiliares SET deleted_at = 1 WHERE paciente = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 
 		//eliminar registros antpersonales
-		$delete=$db->prepare('UPDATE antpersonales SET deleted_at = 1 WHERE id = :id');
+		$delete=$db->prepare('UPDATE antpersonales SET deleted_at = 1 WHERE paciente = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 
 		//eliminar registros consultas
-		$delete=$db->prepare('UPDATE consultas SET deleted_at = 1 WHERE id = :id');
+		$delete=$db->prepare('UPDATE consultas SET deleted_at = 1 WHERE paciente = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 
 		//eliminar el historial
-		$delete=$db->prepare('UPDATE historial SET deleted_at = 1 WHERE id = :id');
+		$delete=$db->prepare('UPDATE historial SET deleted_at = 1 WHERE paciente = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
 		

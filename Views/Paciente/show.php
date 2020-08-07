@@ -42,8 +42,8 @@
 					<th scope="col">OpI</th>
 					<th scope="col">OpII</th>
 					<?php if($_SESSION['usuario_id'] == 1) {  ?>
-					<th scope="col">OpIII</th>
-					<th scope="col">OpIV</th>
+						<th scope="col">OpIII</th>
+						<th scope="col">OpIV</th>
 					<?php } ?>
 				</tr>
 			</thead>
@@ -69,7 +69,7 @@
 								class=""></span> Baja </button></td>
 					<td><button type="button" class="btn btn-success"
 							onclick="location.href='?controller=historia&action=register&id=<?php echo $paciente->getId()?>'"><span
-								class=""></span> C/E Historial</button></td>
+								class=""></span> C/E H</button></td>
 				</tr>
 
 				<?php } else { ?>
