@@ -116,4 +116,11 @@ class PacienteController
 			$this->show();
 		}		
 	}
+
+	public function baja()
+	{
+		Paciente::down($_GET['id']);
+		$_SESSION['mensaje']='Registro dado de baja satisfactoriamente';
+		$this->show();
+	}
 }

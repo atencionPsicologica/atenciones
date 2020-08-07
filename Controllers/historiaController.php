@@ -65,12 +65,17 @@ class HistoriaController
 
 	//muestra las historias clínicas creadas
 	public function show(){
-		//$historias=HistoClinica::all();
-		$historias=HistoClinica::allByAcompanainte($_SESSION['usuario_id']);
-		//var_dump($historias);
-		//die();
-		//$paciente=Paciente::getById($_SESSION['usuario_id']);
-		//paginator
+		
+		if ($_SESSION['usuario_id'] != 1) 
+		{
+			$historias=HistoClinica::allByAcompanainte($_SESSION['usuario_id']);	
+		}
+		else
+		{
+			$historias=HistoClinica::all();
+		}
+		
+		
 		$lista_historias="";
 		$registros=4; // debe ser siempre par
 		if (count($historias)>$registros) { // solo página si el número de registros mostrados es menor que los registros de la bd

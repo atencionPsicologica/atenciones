@@ -61,7 +61,7 @@
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Historiales<span class="caret"></span></a>
 						<ul class="dropdown-menu">						
 							<li><a class="dropdown-item"  href="?controller=usuario&action=register">Registrar</a></li>
-							<li><a class="dropdown-item"  href="?controller=paciente&action=show">Ver Historiales</a></li>
+							<li><a class="dropdown-item"  href="?controller=historia&action=show">Ver Historiales</a></li>
 						</ul>
 					</li>
 

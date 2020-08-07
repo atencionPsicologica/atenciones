@@ -309,8 +309,10 @@ class Paciente
 	public static function down ($id){
 		$db=Db::getConnect();
 
+		//echo $id;
 		// elimina en cascada
-
+		
+		
 		//eliminar registros antfamiliares
 		$delete=$db->prepare('UPDATE antfamiliares SET deleted_at = 1 WHERE id = :id');
 		$delete->bindValue('id',$id);
@@ -330,12 +332,12 @@ class Paciente
 		$delete=$db->prepare('UPDATE historial SET deleted_at = 1 WHERE id = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
+		
 
 		//eliminar el paciente
 		$delete=$db->prepare('UPDATE pacientes SET deleted_at = 1 WHERE id = :id');
 		$delete->bindValue('id',$id);
 		$delete->execute();
-
 		
 	}
 
