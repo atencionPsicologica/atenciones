@@ -14,6 +14,7 @@
 			</div-->
 			<div class="collapse show navbar-collapse">
 			<ul class="navbar-nav mr-auto ">
+				
 			<?php if (isset($_SESSION['usuario'])){ ?>		
 				<?php if ($_SESSION['usuario_alias'] != "MUJ") { ?>
 

@@ -42,7 +42,7 @@
 
 					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter email">
 						<input class="input100" type="text" id="email" name="email">
-						<span class="focus-input100" data-placeholder="usuario"></span>
+						<span class="focus-input100" data-placeholder="email"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
@@ -52,7 +52,7 @@
 
 					<div class="container-login100-form-btn">
 						
-						<button type="submit" class="login100-form-btn btn btn-success"> Ingresar</button>
+						<button type="submit" class="login100-form-btn btn-primary  "> Ingresar</button>
 					</div>
 
 					<!--ul class="login-more p-t-190">
