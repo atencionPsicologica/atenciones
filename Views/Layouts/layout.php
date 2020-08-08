@@ -26,6 +26,41 @@
 	<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
 	<link rel="stylesheet" href="assets/css/posiciones.css">
 
+	<?php if (!isset($_SESSION['usuario'])){ ?>
+		
+		<link rel="stylesheet" href="assets/entorno/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/entorno/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/entorno/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/entorno/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/entorno/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="assets/entorno/vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="assets/entorno/assets/css/estilo.css">
+    <link rel="stylesheet" href="assets/entorno/assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="assets/login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/login/css/main.css">
+    <!--===============================================================================================-->
+	<?php } ?>
+
 
 </head>
 
@@ -170,6 +205,77 @@
 			});
 		});
 	</script>
+
+
+<?php if (!isset($_SESSION['usuario'])){ ?>
+		
+		<link rel="stylesheet" href="assets/entorno/vendors/bootstrap/dist/css/bootstrap.min.css">
+		<script src="assets/entorno/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="assets/entorno/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/entorno/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/entorno/assets/js/main.js"></script>
+    <script src="assets/entorno/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="assets/entorno/assets/js/dashboard.js"></script>
+    <script src="assets/entorno/assets/js/widgets.js"></script>
+    <script src="assets/entorno/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="assets/entorno/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="assets/entorno/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="assets/entorno/assets/js/tesoreros.js"></script>
+    <script src="assets/entorno/assets/js/Japascript.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="assets/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/login/js/main.js"></script>
+
+    <script>
+        (function ($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+
+
+            document.querySelector('table').addEventListener('click', function (event) {
+                if (event.target.tagName.toLowerCase() === 'td') {
+                    var td = event.target;
+                    var fila = td.parentNode;
+                    fila.classList.toggle("productoSeleccinado");
+                }
+            });
+            document.querySelector('table').addEventListener('dblclick', function (event) {
+                if (event.target.tagName.toLowerCase() === 'td') {
+                    var td = event.target;
+                    editarProducto(td);
+                }
+            });
+
+
+        })(jQuery);
+    </script>
+	<?php } ?>
+
 
 </body>
 
