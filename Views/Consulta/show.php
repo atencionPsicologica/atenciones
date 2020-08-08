@@ -34,6 +34,7 @@
 					<th>Paciente</th>
 					<th>OPI</th>
 					<th>OPII</th>
+					<th>OPIII</th>
 				</tr>
 			</thead>
 			<tbody>	
@@ -44,6 +45,7 @@
 					<td><?php $paciente=Paciente::getById($consulta->getPaciente()); echo $paciente->getNombres().' '.$paciente->getApellidos();?></td>
 					<td> <button type="button" class="btn btn-success" onclick="location.href='?controller=consulta&action=showupdate&id=<?php echo $consulta->getId()?>&paciente=<?php echo $consulta->getPaciente() ?>'"><span class="glyphicon glyphicon-edit"></span> Editar Consulta</button></td>
 					<td> <button type="button" class="btn btn-info" onclick="location.href='?controller=consulta&action=recetaPdf&fecha=<?php echo $consulta->getFecha()?>&paciente=<?php echo $paciente->getId() ?>'"><span class="glyphicon glyphicon-cloud-download"></span> Descargar Receta PDF</button></td>
+					<td> <button type="button" class="btn btn-success" onclick="location.href='?controller=paciente&action=atender&id=<?php echo $paciente->getId()?>'"><span class="glyphicon glyphicon-cloud-download"></span> Atender  </button></td>
 				</tr>
 				<?php } ?>
 			</tbody>

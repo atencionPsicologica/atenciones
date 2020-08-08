@@ -341,5 +341,20 @@ class Paciente
 		
 	}
 
+
+	public static function attenting ($id){
+		$db=Db::getConnect();
+
+		//echo $id;
+		// elimina en cascada
+
+		//eliminar registros consultas
+		$delete=$db->prepare('UPDATE consultas SET deleted_at = 1 WHERE paciente = :id');
+		$delete->bindValue('id',$id);
+		$delete->execute();
+
+		
+	}
+
 }
 

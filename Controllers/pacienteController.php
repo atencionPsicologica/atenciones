@@ -123,4 +123,12 @@ class PacienteController
 		$_SESSION['mensaje']='Registro dado de baja satisfactoriamente';
 		$this->show();
 	}
+
+	public function atender()
+	{
+		Paciente::attenting($_GET['id']);
+		$_SESSION['mensaje']='Consulta atendida satisfactoriamente';
+		//$this->show();
+		header("location:index.php");
+	}
 }

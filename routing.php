@@ -47,7 +47,7 @@
 	//array con los controladores y sus respectivas acciones
 	$controllers= array(
 						'usuario'=>['show','register','save','showregister', 'update', 'delete', 'showLogin','login','logout','error', 'welcome','root'],
-						'paciente'=>['register','save', 'show', 'showupdate','update', 'delete','buscar', 'baja'],
+						'paciente'=>['register','save', 'show', 'showupdate','update', 'delete','buscar', 'baja', 'atender'],
 						'historia'=>['register','save', 'show', 'showupdate','update', 'delete','reporteHistorico','buscar'],
 						'consulta'=>['register','save','show', 'showupdate','update','recetaPdf','buscar']
 						);
