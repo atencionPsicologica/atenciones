@@ -76,8 +76,9 @@ class UsuarioController
 			$usuario= new Usuario(null,$_POST['alias'], $_POST['nombres'],$_POST['apellidos'],$_POST['email'], $_POST['pwd'], NULL, NULL);
 			Usuario::save($usuario);
 			$_SESSION['mensaje']='Registro guardado satisfactoriamente';
-			$this->showLogin();
+			//$this->showLogin();
 			//header('Location: index.php');
+			header('Location: index.php');
 			//require_once('Views/Layouts/layout.php');*/
 		}else{
 			$_SESSION['mensaje']='El alias o el correo para tu usuario ya existen';

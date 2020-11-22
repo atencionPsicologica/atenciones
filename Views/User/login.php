@@ -79,11 +79,6 @@
 					</ul-->
 
 				</form>
-
-				<div class="container-login100-form-btn">
-						<a href="?controller=usuario&action=register"> register </a>
-				</div>
-
 			</div>
 		</div>
 	</div>
