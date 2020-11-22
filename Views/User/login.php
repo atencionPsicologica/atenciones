@@ -55,6 +55,7 @@
 						<button type="submit" class="login100-form-btn btn-primary  "> Ingresar</button>
 					</div>
 
+
 					<!--ul class="login-more p-t-190">
 						<li class="m-b-8">
 							<span class="txt1">
@@ -76,7 +77,13 @@
 							</a>
 						</li>
 					</ul-->
+
 				</form>
+
+				<div class="container-login100-form-btn">
+						<a href="?controller=usuario&action=register"> register </a>
+				</div>
+
 			</div>
 		</div>
 	</div>

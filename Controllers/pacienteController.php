@@ -33,7 +33,7 @@ class PacienteController
 		//var_dump($_SESSION['usuario_id']);
 		//die();
 		//modificar de tal forma que muestre las consultas del dia de cada usuario por paciente.
-		if ($_SESSION['usuario_id'] != 1) 
+		if ($_SESSION['usuario_alias'] != "MUJ") 
 		{
 			$pacientes=Paciente::all($_SESSION['usuario_id']);
 		}

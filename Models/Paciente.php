@@ -214,7 +214,7 @@ class Paciente
 
 	public static function allMUJ(){
 		$listaPacientes =[];
-		$db=Db::getConnect();
+		$db=Db::getConnect(); 	
 		$sql=$db->prepare('SELECT * FROM pacientes WHERE  deleted_at = 0');
 		$sql->execute();
 
